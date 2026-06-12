@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bhanu Cheepurupalli — About</title>
+<link rel="icon" href="assets/mark-eye.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Gloock&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#F2E7D2; --cream-2:#EADCC0; --paper:#FBF5E9;
+    --ink:#2B2118; --ink-soft:#473A2B; --ink-faint:#7C6F5C;
+    --terra:#E0612A; --terra-dk:#B8431B; --marigold:#E9A72C;
+    --indigo:#4B4FA6; --olive:#6E7A39; --coral:#E08A82; --rule:#DCCBAD;
+    --serif:"Instrument Serif",Georgia,serif; --gloock:"Gloock",Georgia,serif;
+    --courier:"Courier Prime","Courier New",monospace; --space:"Space Mono",monospace;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--courier); font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; }
+  ::selection{ background:var(--marigold); color:var(--ink); }
+  a{ color:var(--terra-dk); text-decoration:none; }
+  .wrap{ max-width:1020px; margin:0 auto; padding:0 32px; }
+  .col{ max-width:680px; margin:0 auto; }
+  img{ display:block; }
+
+  /* masthead (shared) */
+  .masthead{ border-bottom:2px solid var(--ink); background:var(--paper); position:sticky; top:0; z-index:20; }
+  .masthead .flag{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:18px 0 16px; }
+  .masthead .flagrow{ display:flex; align-items:center; gap:13px; }
+  .masthead .flagrow img{ width:30px; }
+  .masthead .name{ font-family:var(--serif); font-size:29px; line-height:1; letter-spacing:0.01em; white-space:nowrap; }
+  .masthead .strap{ font-family:var(--space); font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-faint); }
+  .pills{ display:flex; gap:9px; flex-wrap:wrap; justify-content:center; }
+  .pills a{ font-family:var(--space); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); padding:7px 16px; border:1px solid var(--rule); border-radius:30px; transition:all .15s; }
+  .pills a:hover{ border-color:var(--ink); }
+  .pills a.on{ background:var(--marigold); border-color:var(--marigold); color:var(--ink); font-weight:700; }
+
+  /* hero */
+  .ahero{ padding:64px 0 30px; }
+  .ahero .eyebrow{ font-family:var(--space); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; display:flex; align-items:center; gap:10px; justify-content:center; }
+  .ahero .eyebrow img{ width:22px; }
+  .ahero h1{ font-family:var(--serif); font-weight:400; font-size:clamp(34px,5vw,56px); line-height:1.08; text-align:center; margin:20px auto 0; max-width:18ch; }
+  .ahero h1 em{ font-style:italic; color:var(--terra-dk); }
+  .portrait{ width:clamp(150px,22vw,196px); margin:38px auto 0; border:1.5px solid var(--ink); padding:7px; background:var(--cream); }
+  .portrait img{ width:100%; }
+  .portrait figcaption{ font-family:var(--courier); font-style:italic; font-size:11px; color:var(--ink-faint); text-align:center; margin-top:8px; }
+
+  /* bio body */
+  .bio{ padding:30px 0 10px; }
+  .bio .lead{ font-family:var(--serif); font-size:clamp(22px,2.8vw,27px); line-height:1.45; color:var(--ink); margin:0 0 26px; }
+  .bio .lead em{ font-style:italic; color:var(--terra-dk); }
+  .bio p{ font-family:var(--courier); font-size:15.5px; line-height:1.78; color:var(--ink-soft); margin:0 0 20px; }
+  .bio p strong{ color:var(--ink); font-weight:700; }
+  .bio p a{ border-bottom:1px solid rgba(184,67,27,0.4); }
+  .bio p a:hover{ border-color:var(--terra-dk); }
+
+  .pull{ font-family:var(--serif); font-style:italic; font-size:clamp(22px,3vw,30px); line-height:1.3; color:var(--ink); border-left:3px solid var(--marigold); padding:6px 0 6px 22px; margin:32px 0; }
+
+  /* meta blocks */
+  .divider{ border:0; border-top:1px solid var(--rule); margin:42px 0; }
+  .metablock{ margin:0 0 36px; }
+  .metablock .lbl{ font-family:var(--space); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; margin:0 0 16px; }
+  .nowlist{ display:flex; flex-direction:column; gap:0; }
+  .nowrow{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:11px 0; border-top:1px solid var(--rule); align-items:baseline; }
+  .nowrow:last-child{ border-bottom:1px solid var(--rule); }
+  .nowrow .nk{ font-family:var(--space); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .nowrow .nv{ font-family:var(--courier); font-size:14.5px; color:var(--ink); line-height:1.45; }
+  .nowrow .nv span{ display:block; font-size:12.5px; color:var(--ink-soft); }
+
+  .writelist{ display:flex; flex-direction:column; }
+  .wr{ display:grid; grid-template-columns:1fr auto; gap:16px; align-items:baseline; padding:13px 0; border-top:1px solid var(--rule); }
+  .wr:last-child{ border-bottom:1px solid var(--rule); }
+  .wr .wt{ font-family:var(--serif); font-size:19px; color:var(--ink); line-height:1.15; }
+  .wr .wt span{ display:block; font-family:var(--courier); font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .wr .wl{ font-family:var(--space); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--terra-dk); white-space:nowrap; }
+
+  .langline{ font-family:var(--courier); font-size:14.5px; color:var(--ink); line-height:1.7; }
+  .langline b{ color:var(--terra-dk); font-weight:400; }
+
+  .fundnote{ font-family:var(--courier); font-size:13.5px; color:var(--ink-faint); max-width:60ch; margin:30px auto 0; padding-left:16px; border-left:2px solid var(--rule); font-style:italic; }
+
+  /* contact band */
+  .contact{ background:var(--ink); color:var(--cream); border-top:2px solid var(--ink); margin-top:54px; }
+  .contact .inner{ padding:60px 0; text-align:center; }
+  .contact .eyebrow{ font-family:var(--space); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--marigold); font-weight:700; }
+  .contact h2{ font-family:var(--serif); font-weight:400; font-size:clamp(32px,5vw,52px); line-height:1.0; margin:14px 0 10px; color:var(--cream); }
+  .contact p{ font-family:var(--courier); font-size:15px; color:#D8CBB2; max-width:52ch; margin:0 auto 28px; }
+  .reach{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .reach a{ display:flex; align-items:center; gap:10px; font-family:var(--space); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); background:var(--marigold); padding:14px 22px; border-radius:2px; transition:all .15s; }
+  .reach a.ghost{ background:transparent; color:var(--cream); border:1.5px solid rgba(242,231,210,0.4); }
+  .reach a.ghost:hover{ border-color:var(--cream); }
+  .reach a .em{ font-family:var(--courier); text-transform:none; letter-spacing:0; font-size:13px; }
+
+  footer{ background:var(--ink); color:var(--cream); border-top:1px solid rgba(242,231,210,0.14); }
+  footer .inner{ padding:34px 0; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  footer img{ width:32px; }
+  footer .fn{ font-family:var(--serif); font-size:21px; }
+  footer .fm{ margin-left:auto; font-family:var(--space); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#B9AC92; text-align:right; line-height:1.7; }
+  footer .fm a{ color:var(--marigold); }
+
+  @media (max-width:620px){
+    .nowrow{ grid-template-columns:1fr; gap:3px; }
+    .wr{ grid-template-columns:1fr; gap:3px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- masthead -->
+  <header class="masthead">
+    <div class="wrap"><div class="flag">
+      <div class="flagrow"><img src="assets/mark-eye.png" alt="" /><span class="name">Bhanu Cheepurupalli</span></div>
+      <div class="strap">Generalist by design</div>
+      <nav class="pills">
+        <a href="index.html">Profile</a>
+        <a href="Work.html">Work</a>
+        <a href="Play.html">Play</a>
+        <a href="About.html" class="on">About</a>
+      </nav>
+    </div></div>
+  </header>
+
+  <!-- hero -->
+  <div class="wrap">
+    <section class="ahero col">
+      <div class="eyebrow"><img src="assets/mark-eye.png" alt="" /> About</div>
+      <h1>I investigate whether power keeps its <em>promises</em>.</h1>
+      <figure class="portrait"><img src="assets/work/headshot.jpg" alt="Bhanu Cheepurupalli" /><figcaption>Bhanu Cheepurupalli</figcaption></figure>
+    </section>
+  </div>
+
+  <!-- bio -->
+  <div class="wrap">
+    <article class="bio col">
+      <p class="lead">I'm Bhanu — a <em>policy generalist</em> working where digital rights, human-rights accountability, and democratic governance overlap. I care about the unglamorous machinery of whether institutions keep their word.</p>
+
+      <p>That throughline has taken me to some unlikely places. In 2022 I sat with Indigenous Jarai leaders in the highlands of Ratanakiri, in Cambodia's Lower Mekong, documenting environmental and labor-rights violations inside a critical-minerals negotiation. Fieldwork like that reframed accountability for me — not as an abstraction, but as something owed to specific people, in specific rooms, on a specific timeline.</p>
+
+      <p>I've also worked accountability from the inside. At the <strong>UNICEF Evaluation Office</strong> I co-led a gender-policy evaluation and built a management-response dashboard that was piloted across the organization — a quiet tool for tracking whether commitments actually turn into action. Earlier, as Amnesty International chapter president, I built a youth-led campaign, <strong>12 Hours of Action for Black Lives</strong>, that drew 800 participants worldwide.</p>
+
+      <p class="pull">I refuse to be pigeonholed into a single lane — the throughline is the question, not the discipline.</p>
+
+      <p>Right now my attention is on frontier AI. As a <strong>CORDA Democracy Scholar</strong> with the AI Whistleblower Initiative, I lead a team building civic-transparency trackers on how Congress oversees the most powerful AI labs in the world. This fall I join the <strong>U.S. House Committee on Oversight</strong> as a Democratic Oversight Fellow. <a href="Work.html">See the work →</a></p>
+
+      <p>I was trained at <strong>Claremont McKenna College</strong> (International Relations &amp; Philosophy) and the <strong>University of Oxford</strong>, was a Truman Scholarship finalist and a Presidential Research Fund recipient, and I think in four languages. The philosophy degree wasn't a detour — it's where I learned that the most important question is usually <em>"says who, and by what right?"</em></p>
+
+      <hr class="divider" />
+
+      <div class="metablock">
+        <p class="lbl">Currently</p>
+        <div class="nowlist">
+          <div class="nowrow"><span class="nk">Based</span><span class="nv">Princeton, New Jersey</span></div>
+          <div class="nowrow"><span class="nk">Now</span><span class="nv">CORDA Democracy Scholar<span>AI Whistleblower Initiative</span></span></div>
+          <div class="nowrow"><span class="nk">Incoming</span><span class="nv">Democratic Oversight Fellow<span>U.S. House Committee on Oversight</span></span></div>
+          <div class="nowrow"><span class="nk">Focus</span><span class="nv">Digital rights · evidence-based policy · human-rights accountability</span></div>
+        </div>
+      </div>
+
+      <div class="metablock">
+        <p class="lbl">Languages</p>
+        <p class="langline"><b>Telugu</b> &amp; <b>Hindi</b> fluent · <b>Spanish</b> intermediate · <b>Korean</b> elementary</p>
+      </div>
+
+      <div class="metablock">
+        <p class="lbl">Selected writing</p>
+        <div class="writelist">
+          <div class="wr"><span class="wt">Advocacy as a Change Strategy<span>UNICEF Evaluation Office · with Erica Mattellone</span></span><a class="wl" href="https://www.unicef.org/evaluation/blog/advocacy-change-strategy" target="_blank" rel="noopener">unicef.org ↗</a></div>
+          <div class="wr"><span class="wt">Evaluating Advocacy for Greater Impact for Children<span>UNICEF Evaluation Office</span></span><a class="wl" href="https://www.unicef.org/evaluation/blog/evaluating-advocacy-achieving-greater-impact-children" target="_blank" rel="noopener">unicef.org ↗</a></div>
+          <div class="wr"><span class="wt">Genocide: A Comprehensive Introduction<span>Routledge · research &amp; source verification</span></span><a class="wl" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a></div>
+        </div>
+      </div>
+
+      <p class="fundnote">Currently seeking funding for the incoming congressional-oversight fellowship — if that's a fit for you or your org, let's talk.</p>
+    </article>
+  </div>
+
+  <!-- contact -->
+  <section class="contact" id="contact">
+    <div class="wrap"><div class="inner col">
+      <div class="eyebrow">◉ Reach out</div>
+      <h2>Let's build something accountable.</h2>
+      <p>Open to roles, fellowships, writing, and collaboration — especially where rights, governance, and evidence meet. A fuller CV is available on request.</p>
+      <div class="reach">
+        <a href="mailto:bhanucheepurupalli@gmail.com"><span>✉</span><span class="em">bhanucheepurupalli@gmail.com</span></a>
+        <a class="ghost" href="https://www.linkedin.com/in/bhanu-cheepurupalli/" target="_blank" rel="noopener"><span>in</span><span>LinkedIn</span></a>
+      </div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="wrap inner">
+      <img src="assets/mark-eye.png" alt="" /><span class="fn">Bhanu Cheepurupalli</span>
+      <div class="fm"><a href="index.html">Profile</a> · <a href="Work.html">Work</a> · <a href="Play.html">Play</a> · About<br>© 2026 · built on GitHub Pages</div>
+    </div>
+  </footer>
+
+</body>
+</html>

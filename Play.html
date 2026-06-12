@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bhanu Cheepurupalli — Play</title>
+<link rel="icon" href="assets/mark-eye.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Gloock&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=Caveat+Brush&family=Rubik+Wet+Paint&family=Courier+Prime:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#F2E7D2; --cream-2:#EADCC0; --paper:#FBF5E9;
+    --ink:#2B2118; --ink-soft:#473A2B; --ink-faint:#7C6F5C;
+    --terra:#C2552F; --terra-dk:#B8431B; --marigold:#E0AE5B;
+    --indigo:#2A1B3D; --indigo-dk:#1C1230; --olive:#94A06E; --coral:#CE8E84; --violet:#A99BC9; --rule:#DCCBAD;
+    --serif:"Instrument Serif",serif; --gloock:"Gloock",serif; --bric:"Bricolage Grotesque",sans-serif;
+    --caveat:"Caveat",cursive; --courier:"Courier Prime",monospace; --space:"Space Mono",monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--courier); -webkit-font-smoothing:antialiased; }
+  a{ color:var(--terra-dk); text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+
+  /* masthead */
+  .masthead{ border-bottom:2px solid var(--ink); background:var(--paper); position:sticky; top:0; z-index:60; }
+  .masthead .flag{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:18px 0 16px; }
+  .masthead .flagrow{ display:flex; align-items:center; gap:13px; }
+  .masthead .flagrow img{ width:30px; }
+  .masthead .name{ font-family:var(--serif); font-size:29px; line-height:1; white-space:nowrap; }
+  .masthead .strap{ font-family:var(--space); font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-faint); }
+  .pills{ display:flex; gap:9px; flex-wrap:wrap; justify-content:center; }
+  .pills a{ font-family:var(--space); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); padding:7px 16px; border:1px solid var(--rule); border-radius:30px; transition:all .15s; }
+  .pills a:hover{ border-color:var(--ink); }
+  .pills a.on{ background:var(--marigold); border-color:var(--marigold); color:var(--ink); font-weight:700; }
+
+  /* play hero on indigo */
+  .playzone{ background:var(--indigo); color:var(--cream); position:relative; }
+  .playzone .grain{ position:absolute; inset:0; opacity:0.09; background-image:radial-gradient(var(--cream) 1px,transparent 1px); background-size:14px 14px; pointer-events:none; }
+  .phero{ position:relative; padding:46px 0 10px; }
+  .phero .cuts{ display:flex; flex-wrap:wrap; align-items:center; gap:18px 22px; }
+  .cut{ display:inline-block; padding:6px 20px 9px; font-family:var(--gloock); font-size:clamp(38px,7vw,72px); line-height:0.9; color:var(--ink); box-shadow:5px 6px 0 rgba(0,0,0,0.25); position:relative; }
+  .cut.m{ background:var(--marigold); transform:rotate(-3deg); }
+  .cut.c{ background:var(--coral); transform:rotate(2deg); }
+  .cut .pin0{ position:absolute; top:-8px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:var(--terra); box-shadow:inset -2px -2px 0 rgba(0,0,0,0.25); }
+  .phero .hand{ font-family:"Rubik Wet Paint",var(--caveat),cursive; font-weight:400; font-size:clamp(24px,3.4vw,40px); color:var(--marigold); transform:rotate(-2deg); line-height:1.15; }
+  .phero .sub{ font-family:var(--courier); font-size:14px; color:#E5DAC2; max-width:60ch; margin:18px 0 0; }
+
+  /* controls */
+  .controls{ position:relative; display:flex; flex-wrap:wrap; gap:9px; align-items:center; padding:22px 0 24px; }
+  .controls .lbl{ font-family:var(--space); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#C9BEA6; margin-right:4px; }
+  .chip{ font-family:var(--space); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--cream); background:transparent; border:1.5px solid rgba(242,231,210,0.4); padding:8px 14px; border-radius:30px; cursor:pointer; transition:all .14s; }
+  .chip:hover{ border-color:var(--cream); }
+  .chip.on{ color:var(--ink); font-weight:700; }
+  .chip[data-c="reading"].on{ background:var(--marigold); border-color:var(--marigold); }
+  .chip[data-c="research"].on{ background:var(--cream); border-color:var(--cream); }
+  .chip[data-c="radar"].on{ background:var(--coral); border-color:var(--coral); }
+  .chip[data-c="me"].on{ background:var(--olive); border-color:var(--olive); color:var(--ink); }
+  .chip[data-c="aesthetics"].on{ background:var(--violet); border-color:var(--violet); }
+  .controls .spacer{ flex:1; }
+  .controls .util{ font-family:var(--space); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--cream); background:rgba(0,0,0,0.18); border:1px solid rgba(242,231,210,0.3); padding:8px 13px; border-radius:4px; cursor:pointer; }
+  .controls .util:hover{ background:rgba(0,0,0,0.32); }
+
+  /* board */
+  .boardwrap{ position:relative; overflow:auto; border-top:1.5px solid rgba(242,231,210,0.25); }
+  .board{ position:relative; width:1080px; height:2080px; margin:0 auto; }
+  .strings{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible; z-index:0; }
+  .strings line{ stroke:rgba(242,231,210,0.30); stroke-width:1.5; stroke-dasharray:2 6; stroke-linecap:round; }
+  .strings .knot{ fill:var(--marigold); opacity:0.65; }
+  .pin{ position:absolute; width:210px; padding:15px 16px 16px; cursor:grab; user-select:none; box-shadow:3px 4px 0 rgba(0,0,0,0.22); transition:box-shadow .12s, transform .05s; touch-action:none; }
+  .pin:active{ cursor:grabbing; }
+  .pin.dragging{ box-shadow:7px 9px 0 rgba(0,0,0,0.3); z-index:50 !important; }
+  .pin .ptack{ position:absolute; top:-7px; left:50%; transform:translateX(-50%); width:13px; height:13px; border-radius:50%; background:var(--terra); box-shadow:inset -2px -2px 0 rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,.3); }
+  .pin .pcat{ font-family:var(--space); font-size:8.5px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7; }
+  .pin .pttl{ font-family:var(--gloock); font-size:19px; line-height:1.05; margin:5px 0 0; }
+  .pin .pteaser{ font-family:var(--courier); font-size:11.5px; line-height:1.4; margin-top:7px; opacity:0.92; }
+  .pin .pmore{ font-family:var(--space); font-size:8.5px; letter-spacing:0.08em; text-transform:uppercase; margin-top:10px; opacity:0.65; }
+  .pin.reading{ background:var(--marigold); color:var(--ink); }
+  .pin.research{ background:var(--cream); color:var(--ink); }
+  .pin.radar{ background:var(--coral); color:var(--ink); }
+  .pin.me{ background:var(--olive); color:var(--ink); }
+  .pin.aesthetics{ background:var(--violet); color:var(--ink); }
+  .pin.guest{ background:var(--paper); color:var(--ink); border:1.5px dashed var(--terra-dk); }
+  .pin.imgpin{ width:180px; padding:8px; background:var(--cream); }
+  .pin.imgpin img{ width:100%; display:block; }
+  .pin.imgpin .pcap{ font-family:var(--caveat); font-weight:700; font-size:18px; color:var(--ink); text-align:center; margin-top:4px; }
+  .pin.faded{ opacity:0.16; filter:saturate(0.4); }
+  .pin.handnote{ background:transparent; box-shadow:none; font-family:var(--caveat); font-weight:700; color:var(--marigold); width:auto; max-width:220px; }
+  .pin.handnote .pttl{ font-family:"Caveat Brush",var(--caveat),cursive; font-size:32px; color:var(--marigold); }
+  .pin.handnote .ptack{ display:none; }
+
+  /* side panel */
+  .scrim{ position:fixed; inset:0; background:rgba(20,16,10,0.55); opacity:0; pointer-events:none; transition:opacity .2s; z-index:70; }
+  .scrim.show{ opacity:1; pointer-events:auto; }
+  .panel{ position:fixed; top:0; right:0; height:100%; width:min(420px,92vw); background:var(--paper); border-left:2px solid var(--ink); transform:translateX(100%); transition:transform .26s cubic-bezier(.4,0,.2,1); z-index:80; display:flex; flex-direction:column; }
+  .panel.show{ transform:none; }
+  .panel .phd{ padding:22px 26px; border-bottom:1.5px solid var(--ink); display:flex; align-items:flex-start; gap:14px; }
+  .panel .pcatbig{ font-family:var(--space); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .panel .ptitle{ font-family:var(--serif); font-size:32px; line-height:1.02; margin:6px 0 0; }
+  .panel .close{ margin-left:auto; font-family:var(--space); font-size:18px; cursor:pointer; color:var(--ink-faint); background:none; border:none; }
+  .panel .pbody{ padding:24px 26px; overflow:auto; }
+  .panel .pbody p{ font-family:var(--courier); font-size:14.5px; line-height:1.6; color:var(--ink-soft); margin:0 0 16px; }
+  .panel .plink{ display:inline-flex; align-items:center; gap:8px; font-family:var(--space); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); border:1.5px solid var(--ink); padding:11px 16px; border-radius:3px; margin-top:6px; transition:all .15s; }
+  .panel .plink:hover{ background:var(--ink); color:var(--paper); }
+  .panel .pswatch{ height:5px; width:46px; border-radius:3px; margin-bottom:2px; }
+
+  /* guest modal */
+  .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:90; }
+  .modal.show{ display:flex; }
+  .modal .mback{ position:absolute; inset:0; background:rgba(20,16,10,0.55); }
+  .modal .mbox{ position:relative; background:var(--paper); border:2px solid var(--ink); width:min(440px,92vw); padding:0; }
+  .modal .mhd{ padding:20px 24px 6px; }
+  .modal .mhd .mk{ font-family:var(--space); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .modal .mhd h3{ font-family:var(--serif); font-weight:400; font-size:27px; margin:6px 0 2px; }
+  .modal .mhd p{ font-family:var(--courier); font-size:12.5px; color:var(--ink-soft); margin:0; }
+  .modal .mbody{ padding:14px 24px 22px; display:flex; flex-direction:column; gap:12px; }
+  .modal label{ font-family:var(--space); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); display:block; margin-bottom:5px; }
+  .modal input,.modal textarea,.modal select{ width:100%; font-family:var(--courier); font-size:14px; color:var(--ink); background:var(--cream); border:1px solid var(--rule); padding:10px 12px; border-radius:3px; }
+  .modal textarea{ min-height:72px; resize:vertical; }
+  .modal .mrow{ display:flex; gap:10px; }
+  .modal .mrow > div{ flex:1; }
+  .modal .msend{ font-family:var(--space); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:13px; border-radius:3px; cursor:pointer; }
+  .modal .msend:hover{ background:var(--terra-dk); }
+  .modal .mnote{ font-family:var(--courier); font-size:11px; color:var(--ink-faint); }
+
+  footer{ background:var(--ink); color:var(--cream); }
+  footer .inner{ padding:36px 0; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  footer img{ width:32px; }
+  footer .fn{ font-family:var(--serif); font-size:21px; }
+  footer .fm{ margin-left:auto; font-family:var(--space); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#B9AC92; }
+  footer .fm a{ color:var(--marigold); }
+
+  @media (max-width:760px){
+    .board{ width:760px; }
+    .phero .sub{ padding-bottom:4px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="wrap"><div class="flag">
+      <div class="flagrow"><img src="assets/mark-eye.png" alt="" /><span class="name">Bhanu Cheepurupalli</span></div>
+      <div class="strap">Thanks for stopping by ✿</div>
+      <nav class="pills">
+        <a href="index.html">Profile</a>
+        <a href="Work.html">Work</a>
+        <a href="Play.html" class="on">Play</a>
+        <a href="About.html">About</a>
+      </nav>
+    </div></div>
+  </header>
+
+  <div class="playzone">
+    <div class="grain"></div>
+    <div class="wrap">
+      <section class="phero">
+        <div class="cuts">
+          <span class="cut m"><span class="pin0"></span>Play</span>
+          <span class="cut c">Explore</span>
+          <span class="hand">my personal brain salad ↴</span>
+        </div>
+        <p class="sub">A working scrapbook — research questions I'm chasing, things I'm reading, ideas and people on my radar, and the odd fun fact. <b style="color:var(--cream)">Drag the pins around. Tap one to open it.</b> This page grows as I do.</p>
+      </section>
+
+      <div class="controls">
+        <span class="lbl">Filter</span>
+        <button class="chip on" data-c="all" type="button">All</button>
+        <button class="chip" data-c="research" type="button">Research Qs</button>
+        <button class="chip" data-c="reading" type="button">Reading</button>
+        <button class="chip" data-c="radar" type="button">On my radar</button>
+        <button class="chip" data-c="me" type="button">Fun facts</button>
+        <button class="chip" data-c="aesthetics" type="button">Aesthetics</button>
+        <span class="spacer"></span>
+        <button class="util" id="addBtn" type="button">＋ Pin a thought</button>
+        <button class="util" id="resetBtn" type="button">↺ Reset board</button>
+      </div>
+    </div>
+
+    <div class="boardwrap">
+      <div class="board" id="board"></div>
+    </div>
+  </div>
+
+  <footer><div class="wrap inner">
+    <img src="assets/mark-eye.png" alt="" /><span class="fn">Bhanu Cheepurupalli</span>
+    <div class="fm"><a href="index.html">Profile</a> · <a href="Work.html">Work</a> · Play &nbsp;·&nbsp; © 2026</div>
+  </div></footer>
+
+  <!-- side panel -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="panel" id="panel">
+    <div class="phd">
+      <div>
+        <div class="pswatch" id="pSwatch"></div>
+        <div class="pcatbig" id="pCat"></div>
+        <h2 class="ptitle" id="pTitle"></h2>
+      </div>
+      <button class="close" id="pClose" aria-label="Close">✕</button>
+    </div>
+    <div class="pbody" id="pBody"></div>
+  </aside>
+
+  <!-- guest modal -->
+  <div class="modal" id="modal">
+    <div class="mback" id="mBack"></div>
+    <div class="mbox">
+      <div class="mhd">
+        <div class="mk">◉ Guest pin</div>
+        <h3>Leave me a thought</h3>
+        <p>A book rec, an idea, a question, a fun fact — pin it to the board.</p>
+      </div>
+      <div class="mbody">
+        <div class="mrow">
+          <div><label>Your name (optional)</label><input id="gName" type="text" placeholder="anon" maxlength="24" /></div>
+          <div><label>Type</label><select id="gType"><option value="radar">A rec / idea</option><option value="research">A question</option><option value="me">A fun fact</option><option value="reading">A book</option></select></div>
+        </div>
+        <div><label>Your note</label><textarea id="gMsg" maxlength="160" placeholder="Have you read…"></textarea></div>
+        <button class="msend" id="gSend" type="button">Pin it to the board →</button>
+        <p class="mnote">Saved in your browser for now — Bhanu reviews guest pins before they go live for everyone.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var CAT={
+    reading:{label:"Reading",color:"#C68A3E"},
+    research:{label:"Research Question",color:"#5B4A78"},
+    radar:{label:"On My Radar",color:"#B96F64"},
+    me:{label:"Fun Fact",color:"#6E7A4C"},
+    aesthetics:{label:"Aesthetics",color:"#7E6FA8"},
+    guest:{label:"Guest Pin",color:"#B8431B"}
+  };
+  // x,y are defaults on the 1080-wide canvas
+  var PINS=[
+    {id:"r1",c:"research",x:30,y:30,t:"Digital colonialism",teaser:"Whose frameworks govern the South Asian internet?",body:"Reporting often covers internet shutdowns — but I'm more interested in the deeper layer: how foreign tech dominance and Northern policy frameworks fail to account for local South Asian contexts, and what a decolonised digital-governance frame would even look like."},
+    {id:"r3",c:"research",x:560,y:40,t:"Climate-displaced persons",teaser:"The humanitarian economics of displacement.",body:"What is the legal status — and the 'humanitarian economics' — of people displaced by climate disasters? I'm interested in how regional bodies like SAARC or 'mini-lateral' agreements could drive adaptation finance."},
+    {id:"me2",c:"me",x:290,y:95,t:"Substack is incredibly 2025",teaser:"So I'm building this instead.",body:"I'm slowly moving my academic and creative work here rather than onto yet another newsletter. Consider this the anti-Substack."},
+    {id:"ae1",c:"aesthetics",x:815,y:95,t:"Posters of things I like",teaser:"My visual brain, externalised.",body:"A Pinterest board of surreal collage, vintage illustration, tiny intricate worlds, and folk art — the stuff that feeds how I think and make.",link:"https://www.pinterest.com/bhanucheepurupalli/posters-of-things-i-like/",linkText:"Open the board ↗"},
+
+    {id:"r2",c:"research",x:30,y:305,t:"Surveillance & the diaspora",teaser:"Tracking people across borders with AI.",body:"How do South Asian states use generative AI and monitoring software to track diaspora communities abroad — and where are the accountability gaps when surveillance crosses jurisdictions?"},
+    {id:"r4",c:"research",x:300,y:360,t:"Language access in democracy",teaser:"Can you vote in a language you think in?",body:"Are evolving electoral landscapes (think major hubs like Chicago) actually providing language access to South Asian voters? Multilingualism sits right at the intersection of civil rights and public policy."},
+    {id:"rd1",c:"radar",x:560,y:295,t:"My AI-oversight rabbit hole",teaser:"What I'm chasing right now.",body:"Tracking how Congress oversees frontier AI labs and national-security risk — the live version of this lives on my Work page.",link:"Work.html",linkText:"See the tracker"},
+    {id:"me4",c:"me",x:815,y:350,t:"I'm an avid birder",teaser:"Give me a wetland and a long lens.",body:"On weekends you'll find me chasing terns and stilts across wetlands with a camera. The patience it takes is the same muscle as good fieldwork — wait, watch, and let the subject come to you."},
+
+    {id:"img-b1",c:"me",x:30,y:565,t:"Whiskered terns, at dawn",img:"assets/play/bird-1.jpg",cap:"terns, at dawn",body:"A wheeling flock of whiskered terns over a wetland at first light — one of my favourite things to photograph."},
+    {id:"r5",c:"research",x:300,y:610,t:"Caste & labor migration",teaser:"Intersectional precarity, North & South.",body:"Nuanced reporting on precarization and labor rights for South Asian migrants moving between the Global North and South — and the intersectional discrimination, including caste, that travels with them."},
+    {id:"r6",c:"research",x:560,y:550,t:"Judicial independence",teaser:"Courts as the last guardrail.",body:"How is the erosion of judicial impartiality reshaping minority rights and democratic norms — and how are courts in India and Pakistan being used to challenge surveillance and social-media law?"},
+    {id:"saunders",c:"reading",x:815,y:585,t:"George Saunders",teaser:"My short-fiction north star.",body:"I keep returning to his stories for how they hold cruelty and tenderness in the same hand. Start with 'Tenth of December.'",link:"https://www.newyorker.com/magazine/2011/10/31/tenth-of-december",linkText:"Read 'Tenth of December' ↗"},
+
+    {id:"malvina",c:"reading",x:30,y:835,t:"Malvina Reynolds",teaser:"Back to the protest songbook.",body:"An essay last year pulled me back to Malvina Reynolds and Tom Paxton — protest singers who said hard things plainly, and who I'd drifted away from for too long.",link:"https://www.elijahwald.com/songblog/we-didnt-nuremberg/",linkText:"Read the essay ↗"},
+    {id:"img-b2",c:"me",x:300,y:860,t:"A black-winged stilt",img:"assets/play/bird-4.jpg",cap:"black-winged stilt",body:"A black-winged stilt, mirrored in still water. Long pink legs, impossibly patient."},
+    {id:"kuang",c:"radar",x:560,y:805,t:"R.F. Kuang — The Poppy War",teaser:"Reviews of the trilogy, coming.",body:"I'm writing up the Poppy War series — war, empire, and the cost of power. Links to my reviews will live here as I post them.",link:"https://bhanu558.wordpress.com",linkText:"My WordPress ↗"},
+    {id:"me5",c:"me",x:815,y:840,t:"Fun project: Afterfund",teaser:"Effective giving, the waqf way.",body:"During my time with the Oxford Majlis I helped build a partnership with Afterfund — an Islamic effective-giving startup using the waqf model.",link:"https://www.instagram.com/p/C2J6KsbAF2f/",linkText:"See the partnership ↗"},
+
+    {id:"toughenough",c:"reading",x:30,y:1085,t:"'Tough Enough?' — Mogensen & Thorstad",teaser:"Decision theory under deep uncertainty.",body:"A Global Priorities Institute paper I keep chewing on — how demanding should our moral theories be when the stakes are vast and the uncertainty is deep?",link:"https://www.globalprioritiesinstitute.org/wp-content/uploads/Tough-Enough_Andreas-Mogensen-and-David-Thorstad.pdf",linkText:"Read the paper ↗"},
+    {id:"mississippi",c:"radar",x:300,y:1105,t:"Recent watch: Mississippi Masala",teaser:"Mira Nair, 1991.",body:"Rewatched Mira Nair's Mississippi Masala — diaspora, race, and belonging across continents. It sent me down a rabbit hole on Mamdani's recent budget-deficit wins as NYC mayor, too."},
+    {id:"dahl",c:"reading",x:560,y:1075,t:"Robert Dahl, as mentor",teaser:"On democracy's quiet teachers.",body:"A remembrance of Robert Dahl that shaped how I think about pluralism — and about who really holds power in a democracy.",link:"https://www.washingtonpost.com/news/monkey-cage/wp/2014/02/11/robert-dahl-as-mentor/",linkText:"Read it ↗"},
+    {id:"img-kali",c:"aesthetics",x:815,y:1100,t:"The mark, in lavender",img:"assets/kali-lavender.png",cap:"my logo ♥",body:"My own mark, in lavender — true to my style, carried over from the old site."},
+
+    {id:"wiley",c:"reading",x:30,y:1340,t:"On deliberative democracy",teaser:"A chapter I keep returning to.",body:"Foundational reading behind my senior thesis on deliberation and the right to be heard.",link:"https://onlinelibrary.wiley.com/doi/abs/10.1002/9781405164566.ch18",linkText:"Open the chapter ↗"},
+    {id:"himalaya",c:"reading",x:300,y:1355,t:"Himalayan rights & advocacy",teaser:"This one shaped my aspirations.",body:"A piece from the Himalaya journal that has long informed my advocacy aspirations.",link:"https://digitalcommons.macalester.edu/cgi/viewcontent.cgi?article=2597&context=himalaya",linkText:"Read it ↗"},
+    {id:"img-b3",c:"me",x:560,y:1335,t:"Terns, taking off",img:"assets/play/bird-5.jpg",cap:"terns, taking off",body:"The whole flock lifting at once — the moment just before they scatter."},
+    {id:"me3",c:"me",x:815,y:1350,t:"Ratanakiri, 2022",teaser:"Fieldwork with the Jarai community.",body:"One of the formative experiences of my work: workshopping in the Cambodian highlands with Indigenous Jarai leaders, documenting rights in a critical-minerals negotiation.",link:"Work.html",linkText:"See the project"},
+
+    {id:"me1",c:"me",x:30,y:1600,t:"I dream in four languages",teaser:"Telugu, Hindi, Spanish, Korean.",body:"Telugu and Hindi fluently; Spanish in the middle; Korean just enough to get into trouble. Languages are how I keep the generalist muscle warm."},
+    {id:"img-camb",c:"me",x:300,y:1605,t:"Somewhere fieldworthy",img:"assets/work/cambodia-1.jpg",cap:"Angkor, 2022",body:"Angkor, 2022 — shot on film during my Oxfam fieldwork summer in Cambodia."},
+    {id:"guestpin",c:"guest",x:560,y:1600,t:"Leave me a thought →",teaser:"A rec, a question, a fun fact.",body:"This board is better with company. Pin a book, an idea, or a question and it'll join the wall.",action:"guest"},
+    {id:"hand1",c:"me",hand:true,x:815,y:1560,t:"drag me ✿"}
+  ];
+
+  var board=document.getElementById('board');
+  var POSKEY='play_pos_v1', GUESTKEY='play_guest_v1';
+  var savedPos=JSON.parse(localStorage.getItem(POSKEY)||'{}');
+  var guestPins=JSON.parse(localStorage.getItem(GUESTKEY)||'[]');
+  var allPins=PINS.concat(guestPins);
+  var zTop=10;
+
+  function makePin(p){
+    var el=document.createElement('div');
+    el.className='pin '+p.c+(p.hand?' handnote':'')+(p.img?' imgpin':'');
+    el.dataset.id=p.id; el.dataset.c=p.c;
+    var pos=savedPos[p.id]||{x:p.x,y:p.y};
+    el.style.left=pos.x+'px'; el.style.top=pos.y+'px';
+    if(p.hand){ el.innerHTML='<div class="pttl">'+p.t+'</div>'; }
+    else if(p.img){ el.innerHTML='<span class="ptack"></span><img src="'+p.img+'" alt=""><div class="pcap">'+p.cap+'</div>'; }
+    else {
+      el.innerHTML='<span class="ptack"></span><div class="pcat">'+(CAT[p.c]?CAT[p.c].label:'')+'</div><div class="pttl">'+p.t+'</div>'+(p.teaser?'<div class="pteaser">'+p.teaser+'</div>':'')+'<div class="pmore">'+(p.action==='guest'?'tap to add →':'tap to open →')+'</div>';
+    }
+    board.appendChild(el);
+    enableDrag(el,p);
+    return el;
+  }
+
+  function enableDrag(el,p){
+    var sx,sy,ox,oy,moved,dragging=false;
+    el.addEventListener('pointerdown',function(e){
+      if(e.button!==undefined&&e.button!==0)return;
+      dragging=true; moved=false;
+      sx=e.clientX; sy=e.clientY;
+      ox=parseFloat(el.style.left); oy=parseFloat(el.style.top);
+      el.classList.add('dragging'); el.style.zIndex=(++zTop);
+      el.setPointerCapture(e.pointerId);
+    });
+    el.addEventListener('pointermove',function(e){
+      if(!dragging)return;
+      var dx=e.clientX-sx, dy=e.clientY-sy;
+      if(Math.abs(dx)>4||Math.abs(dy)>4)moved=true;
+      el.style.left=Math.max(0,ox+dx)+'px';
+      el.style.top=Math.max(0,oy+dy)+'px';
+      updateStrings();
+    });
+    function end(e){
+      if(!dragging)return; dragging=false;
+      el.classList.remove('dragging');
+      if(moved){ savedPos[p.id]={x:parseFloat(el.style.left),y:parseFloat(el.style.top)}; localStorage.setItem(POSKEY,JSON.stringify(savedPos)); }
+      else { if(p.action==='guest')openModal(); else if(!p.hand)openPanel(p); }
+    }
+    el.addEventListener('pointerup',end);
+    el.addEventListener('pointercancel',end);
+  }
+
+  // panel
+  var scrim=document.getElementById('scrim'),panel=document.getElementById('panel');
+  function openPanel(p){
+    document.getElementById('pSwatch').style.background=CAT[p.c]?CAT[p.c].color:'#888';
+    document.getElementById('pCat').textContent=CAT[p.c]?CAT[p.c].label:'';
+    document.getElementById('pTitle').textContent=p.t;
+    var body=document.getElementById('pBody');
+    var html='<p>'+(p.body||p.teaser||'')+'</p>';
+    if(p.by)html+='<p style="font-family:var(--caveat);font-size:20px;color:var(--terra-dk);">— '+p.by+'</p>';
+    if(p.link)html+='<a class="plink" href="'+p.link+'"'+(/^https?:/.test(p.link)?' target="_blank" rel="noopener"':'')+'>'+(p.linkText||'Open')+'</a>';
+    body.innerHTML=html;
+    scrim.classList.add('show'); panel.classList.add('show');
+  }
+  function closePanel(){ scrim.classList.remove('show'); panel.classList.remove('show'); }
+  document.getElementById('pClose').addEventListener('click',closePanel);
+  scrim.addEventListener('click',closePanel);
+
+  // filter
+  document.querySelectorAll('.chip').forEach(function(ch){
+    ch.addEventListener('click',function(){
+      document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});
+      ch.classList.add('on');
+      var c=ch.dataset.c;
+      document.querySelectorAll('.pin').forEach(function(el){
+        el.classList.toggle('faded', c!=='all'&&el.dataset.c!==c);
+      });
+    });
+  });
+
+  // guest modal
+  var modal=document.getElementById('modal');
+  function openModal(){ modal.classList.add('show'); }
+  function closeModal(){ modal.classList.remove('show'); }
+  document.getElementById('addBtn').addEventListener('click',openModal);
+  document.getElementById('mBack').addEventListener('click',closeModal);
+  document.getElementById('gSend').addEventListener('click',function(){
+    var msg=document.getElementById('gMsg').value.trim(); if(!msg)return;
+    var name=document.getElementById('gName').value.trim()||'anon';
+    var type=document.getElementById('gType').value;
+    var gp={id:'g'+Date.now(),c:type,x:120+Math.random()*620,y:1300+Math.random()*120,t:msg.length>34?msg.slice(0,32)+'…':msg,teaser:'via '+name,body:msg,by:name};
+    guestPins.push(gp); localStorage.setItem(GUESTKEY,JSON.stringify(guestPins));
+    makePin(gp);
+    document.getElementById('gMsg').value=''; document.getElementById('gName').value='';
+    closeModal();
+    var el=board.querySelector('.pin[data-id="'+gp.id+'"]');
+    if(el){ el.style.zIndex=(++zTop); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  });
+
+  // reset
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Reset all pins to their original spots? (Guest pins stay.)'))return;
+    savedPos={}; localStorage.removeItem(POSKEY);
+    document.querySelectorAll('.pin').forEach(function(e){e.remove();});
+    allPins.forEach(makePin);
+    updateStrings();
+  });
+
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){closePanel();closeModal();} });
+
+  // connecting threads between related pins
+  var CONNECTIONS=[['me4','img-b1'],['me4','img-b2'],['me4','img-b3'],['me3','img-camb'],['ae1','img-kali'],['r1','r2'],['rd1','r2'],['saunders','malvina'],['toughenough','dahl']];
+  var strSvg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  strSvg.setAttribute('class','strings');
+  board.appendChild(strSvg);
+  function pinCenter(id){
+    var el=board.querySelector('.pin[data-id="'+id+'"]');
+    if(!el) return null;
+    return { x:parseFloat(el.style.left)+el.offsetWidth/2, y:parseFloat(el.style.top)+el.offsetHeight/2 };
+  }
+  function updateStrings(){
+    if(!strSvg) return;
+    while(strSvg.firstChild) strSvg.removeChild(strSvg.firstChild);
+    var ns='http://www.w3.org/2000/svg';
+    CONNECTIONS.forEach(function(pr){
+      var a=pinCenter(pr[0]), b=pinCenter(pr[1]); if(!a||!b) return;
+      var ln=document.createElementNS(ns,'line');
+      ln.setAttribute('x1',a.x);ln.setAttribute('y1',a.y);ln.setAttribute('x2',b.x);ln.setAttribute('y2',b.y);
+      strSvg.appendChild(ln);
+      [a,b].forEach(function(p){var c=document.createElementNS(ns,'circle');c.setAttribute('class','knot');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r','2.6');strSvg.appendChild(c);});
+    });
+  }
+
+  allPins.forEach(makePin);
+  updateStrings();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bhanu Cheepurupalli — Work</title>
+<link rel="icon" href="assets/mark-eye.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Gloock&family=Big+Shoulders+Display:wght@500;700;800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#F2E7D2; --cream-2:#EADCC0; --paper:#FBF5E9;
+    --ink:#2B2118; --ink-soft:#473A2B; --ink-faint:#7C6F5C;
+    --terra:#E0612A; --terra-dk:#B8431B; --marigold:#E9A72C;
+    --indigo:#4B4FA6; --olive:#6E7A39; --coral:#E08A82; --rule:#DCCBAD;
+    --serif:"Instrument Serif",Georgia,serif; --gloock:"Gloock",Georgia,serif;
+    --shoulder:"Big Shoulders Display",sans-serif;
+    --courier:"Courier Prime","Courier New",monospace; --space:"Space Mono",monospace;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--courier); font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased; }
+  ::selection{ background:var(--marigold); color:var(--ink); }
+  a{ color:var(--terra-dk); text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+  img{ display:block; }
+
+  /* masthead */
+  .masthead{ border-bottom:2px solid var(--ink); background:var(--paper); position:sticky; top:0; z-index:20; }
+  .masthead .flag{ display:flex; flex-direction:column; align-items:center; gap:12px; padding:18px 0 16px; }
+  .masthead .flagrow{ display:flex; align-items:center; gap:13px; }
+  .masthead .flagrow img{ width:30px; }
+  .masthead .name{ font-family:var(--serif); font-size:29px; line-height:1; white-space:nowrap; }
+  .masthead .strap{ font-family:var(--space); font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-faint); }
+  .pills{ display:flex; gap:9px; flex-wrap:wrap; justify-content:center; }
+  .pills a{ font-family:var(--space); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); padding:7px 16px; border:1px solid var(--rule); border-radius:30px; transition:all .15s; }
+  .pills a:hover{ border-color:var(--ink); }
+  .pills a.on{ background:var(--marigold); border-color:var(--marigold); color:var(--ink); font-weight:700; }
+
+  /* press hero */
+  .record{ border-bottom:2px solid var(--ink); }
+  .record .top{ display:flex; justify-content:space-between; align-items:center; padding:11px 0; font-family:var(--space); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); border-bottom:1px solid var(--rule); }
+  .record .top .mk{ color:var(--terra-dk); font-weight:700; }
+  .hero{ padding:46px 0 40px; }
+  .hero .kicker{ font-family:var(--space); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; }
+  .hero h1{ font-family:var(--courier); font-weight:700; font-size:clamp(40px,7vw,82px); line-height:0.92; text-transform:uppercase; letter-spacing:0.01em; margin:14px 0 0; }
+  .hero h1 mark{ background:var(--marigold); color:var(--ink); padding:0 10px; }
+  .hero .deck{ font-family:var(--serif); font-style:italic; font-size:clamp(22px,3vw,30px); color:var(--ink-soft); margin:18px 0 0; max-width:30ch; }
+  .hero .blurb{ font-family:var(--courier); font-size:15px; color:var(--ink-soft); max-width:62ch; margin:22px 0 0; column-gap:40px; }
+
+  /* section head */
+  section.block{ padding:54px 0; border-top:1px solid var(--rule); }
+  .shead{ display:flex; align-items:baseline; gap:18px; margin-bottom:30px; }
+  .shead .sn{ font-family:var(--space); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; }
+  .shead h2{ font-family:var(--gloock); font-weight:400; font-size:clamp(30px,4.4vw,46px); margin:0; line-height:1; }
+  .shead .smeta{ margin-left:auto; font-family:var(--courier); font-size:13px; color:var(--ink-faint); }
+
+  /* flagship */
+  .flagship{ border:1.5px solid var(--ink); background:var(--cream); }
+  .flagship .fbar{ display:flex; align-items:center; gap:18px; padding:18px 26px; border-bottom:1.5px solid var(--ink); flex-wrap:wrap; }
+  .flagship .ftag{ font-family:var(--space); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; background:var(--terra-dk); color:var(--cream); padding:5px 11px; border-radius:2px; }
+  .flagship .fttl{ font-family:var(--shoulder); font-weight:800; font-size:clamp(26px,3.4vw,40px); text-transform:uppercase; line-height:0.9; }
+  .flagship .fstat{ margin-left:auto; font-family:var(--space); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--olive); }
+  .flagship .fstat::before{ content:"● "; }
+  .flagship .fbody{ display:grid; grid-template-columns:1.35fr 1fr; gap:0; }
+  .browser{ border-right:1.5px solid var(--ink); background:#fff; display:flex; flex-direction:column; }
+  .browser .bbar{ display:flex; align-items:center; gap:8px; padding:9px 14px; background:var(--cream-2); border-bottom:1px solid var(--rule); }
+  .browser .dots{ display:flex; gap:5px; }
+  .browser .dots i{ width:9px; height:9px; border-radius:50%; background:var(--ink-faint); opacity:.5; display:block; }
+  .browser .url{ font-family:var(--space); font-size:10.5px; color:var(--ink-soft); background:var(--paper); padding:3px 12px; border-radius:20px; border:1px solid var(--rule); }
+  .browser iframe{ width:100%; height:420px; border:0; background:#fff; }
+  .flagship .fdesc{ padding:28px 30px; }
+  .flagship .fdesc p{ font-family:var(--courier); font-size:14px; color:var(--ink-soft); margin:0 0 16px; }
+  .flagship .fdesc .role{ font-family:var(--serif); font-style:italic; font-size:20px; color:var(--terra-dk); margin:0 0 14px; }
+  .flagship .flinks{ display:flex; flex-direction:column; gap:9px; margin-top:20px; }
+  .flagship .flinks a{ font-family:var(--space); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); border:1px solid var(--ink); padding:10px 15px; border-radius:2px; display:flex; justify-content:space-between; transition:all .15s; }
+  .flagship .flinks a:hover{ background:var(--ink); color:var(--cream); }
+  .flagship .flinks a.soon{ border-style:dashed; color:var(--ink-faint); pointer-events:none; }
+
+  /* gallery */
+  .gal{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .proj{ border:1px solid var(--rule); background:var(--paper); display:flex; flex-direction:column; transition:transform .15s, border-color .15s; overflow:hidden; }
+  .proj:hover{ transform:translateY(-3px); border-color:var(--ink); }
+  .proj .pimg{ aspect-ratio:16/10; overflow:hidden; border-bottom:1px solid var(--rule); background:var(--cream-2); }
+  .proj .pimg img{ width:100%; height:100%; object-fit:cover; }
+  .proj .pimg.duo{ display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+  .proj .pbody{ padding:20px 22px 24px; display:flex; flex-direction:column; flex:1; }
+  .proj .ptag{ font-family:var(--space); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .proj h3{ font-family:var(--serif); font-weight:400; font-size:25px; line-height:1.05; margin:8px 0 8px; color:var(--ink); }
+  .proj p{ font-family:var(--courier); font-size:13px; color:var(--ink-soft); margin:0 0 14px; line-height:1.5; }
+  .proj .plink{ margin-top:auto; font-family:var(--space); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); border-bottom:1.5px solid var(--terra-dk); padding-bottom:2px; align-self:flex-start; }
+  .proj.text .pimg{ background:var(--ink); display:flex; align-items:center; justify-content:center; }
+  .proj.text .pimg .glyph{ font-family:var(--gloock); font-size:64px; color:var(--marigold); }
+
+  /* academic strip */
+  .acad{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .acard{ border:1px solid var(--rule); background:var(--paper); display:grid; grid-template-columns:150px 1fr; overflow:hidden; }
+  .acard .ai{ background:var(--cream-2); overflow:hidden; }
+  .acard .ai img{ width:100%; height:100%; object-fit:cover; }
+  .acard .ab{ padding:18px 20px; }
+  .acard .at{ font-family:var(--space); font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .acard h4{ font-family:var(--serif); font-weight:400; font-size:19px; line-height:1.1; margin:6px 0 7px; }
+  .acard p{ font-family:var(--courier); font-size:12px; color:var(--ink-soft); margin:0; line-height:1.45; }
+
+  /* recognition + worked-with */
+  .twocol{ display:grid; grid-template-columns:1.1fr 1fr; gap:50px; }
+  .recog .ritem{ padding:13px 0; border-bottom:1px solid var(--rule); display:flex; gap:14px; align-items:baseline; }
+  .recog .ritem:first-child{ border-top:1px solid var(--ink); }
+  .recog .ry{ font-family:var(--space); font-size:11px; color:var(--terra-dk); font-weight:700; white-space:nowrap; }
+  .recog .rt{ font-family:var(--courier); font-size:14px; color:var(--ink); }
+  .recog .rt b{ font-family:var(--serif); font-size:19px; font-weight:400; }
+  .worked .wlist{ display:flex; flex-wrap:wrap; gap:8px; }
+  .worked .wlist span{ font-family:var(--courier); font-size:13px; color:var(--ink); border:1px solid var(--rule); padding:7px 14px; border-radius:30px; }
+  .skh{ font-family:var(--space); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 14px; }
+
+  /* writing */
+  .writing .wrow{ display:grid; grid-template-columns:1fr auto; gap:20px; align-items:baseline; padding:15px 8px; border-bottom:1px solid var(--rule); transition:background .12s; }
+  .writing .wrow:first-child{ border-top:1px solid var(--ink); }
+  .writing .wrow:hover{ background:var(--cream); }
+  .writing .wt{ font-family:var(--serif); font-size:21px; color:var(--ink); }
+  .writing .wt .wsub{ display:block; font-family:var(--courier); font-size:12px; color:var(--ink-soft); margin-top:3px; }
+  .writing .wlink{ font-family:var(--space); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--terra-dk); white-space:nowrap; }
+
+  /* index cv */
+  .index{ border-top:1px solid var(--ink); }
+  .xrow{ display:grid; grid-template-columns:130px 1fr 1.25fr 92px; gap:20px; padding:15px 8px; border-bottom:1px solid var(--rule); align-items:baseline; transition:background .12s; }
+  .xrow:hover{ background:var(--cream); }
+  .xrow .xtag{ font-family:var(--space); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .xrow .xorg{ font-family:var(--serif); font-size:20px; line-height:1.05; }
+  .xrow .xorg .xrole{ display:block; font-family:var(--courier); font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .xrow .xdesc{ font-family:var(--courier); font-size:12.5px; color:var(--ink-soft); line-height:1.5; }
+  .xrow .xyr{ font-family:var(--space); font-size:11px; color:var(--ink-faint); text-align:right; }
+
+  /* footer */
+  footer{ background:var(--ink); color:var(--cream); }
+  footer .inner{ padding:44px 0; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  footer img{ width:34px; }
+  footer .fname{ font-family:var(--serif); font-size:22px; }
+  footer .fcta{ margin-left:auto; text-align:right; }
+  footer .fcta a{ font-family:var(--space); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); background:var(--marigold); padding:12px 18px; border-radius:2px; }
+  footer .fmeta{ width:100%; margin-top:8px; font-family:var(--space); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#B9AC92; }
+  footer .fmeta a{ color:var(--marigold); }
+
+  @media (max-width:880px){
+    .flagship .fbody{ grid-template-columns:1fr; }
+    .browser{ border-right:none; border-bottom:1.5px solid var(--ink); }
+    .gal,.acad,.twocol{ grid-template-columns:1fr; }
+    .xrow{ grid-template-columns:1fr; gap:4px; }
+    .xrow .xtag{ order:-1; } .xrow .xyr{ text-align:left; }
+    .acard{ grid-template-columns:110px 1fr; }
+  }
+  /* paper excerpt modal */
+  .pmscrim{ position:fixed; inset:0; background:rgba(20,16,10,0.6); opacity:0; pointer-events:none; transition:opacity .2s; z-index:90; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .pmscrim.show{ opacity:1; pointer-events:auto; }
+  .pmbox{ background:var(--paper); border:1.5px solid var(--ink); max-width:600px; width:100%; max-height:86vh; display:flex; flex-direction:column; transform:translateY(10px); transition:transform .2s; }
+  .pmscrim.show .pmbox{ transform:none; }
+  .pmhd{ padding:24px 30px 18px; border-bottom:1.5px solid var(--ink); }
+  .pmhd .pmk{ font-family:var(--space); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .pmhd h3{ font-family:var(--gloock); font-weight:400; font-size:25px; line-height:1.12; margin:8px 0 6px; }
+  .pmhd .auth{ font-family:var(--courier); font-size:12.5px; color:var(--ink-soft); }
+  .pmbody{ padding:22px 30px 26px; overflow:auto; }
+  .pmbody p{ font-family:var(--courier); font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0 0 16px; }
+  .pmbody p.first::first-letter{ font-family:var(--gloock); font-size:46px; float:left; line-height:0.8; margin:4px 10px 0 0; color:var(--terra-dk); }
+  .pmbody .q{ font-family:var(--serif); font-style:italic; font-size:18px; color:var(--ink); border-left:2px solid var(--marigold); padding-left:16px; margin:18px 0; }
+  .pmft{ padding:14px 30px; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  .pmft .note{ font-family:var(--space); font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); }
+  .pmft button{ font-family:var(--space); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:11px 18px; border-radius:2px; cursor:pointer; }
+  /* methodology charts */
+  .charts .chgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
+  .chcard{ border:1px solid var(--rule); background:#fff; cursor:pointer; display:flex; flex-direction:column; overflow:hidden; transition:border-color .14s, transform .14s; }
+  .chcard:hover{ border-color:var(--ink); transform:translateY(-3px); }
+  .chcard .chimg{ height:150px; background:var(--paper); display:flex; align-items:flex-start; justify-content:center; padding:12px; overflow:hidden; }
+  .chcard .chimg img{ width:100%; height:auto; }
+  .chcard .chcap{ padding:11px 14px; border-top:1px solid var(--rule); }
+  .chcard .chcap .cn{ font-family:var(--space); font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .chcard .chcap .ct{ font-family:var(--serif); font-size:17px; line-height:1.1; color:var(--ink); margin-top:2px; }
+  .chlb{ position:fixed; inset:0; background:rgba(20,16,10,0.8); opacity:0; pointer-events:none; transition:opacity .2s; z-index:95; display:flex; align-items:center; justify-content:center; padding:30px; }
+  .chlb.show{ opacity:1; pointer-events:auto; }
+  .chlb .lbinner{ background:var(--paper); border:1.5px solid var(--ink); max-width:760px; width:100%; max-height:90vh; display:flex; flex-direction:column; }
+  .chlb .lbhd{ padding:15px 22px; border-bottom:1px solid var(--rule); display:flex; align-items:center; gap:12px; }
+  .chlb .lbhd .lbt{ font-family:var(--serif); font-size:21px; }
+  .chlb .lbhd .lbclose{ margin-left:auto; font-family:var(--space); font-size:15px; cursor:pointer; background:none; border:none; color:var(--ink-faint); }
+  .chlb .lbbody{ padding:20px; overflow:auto; }
+  .chlb .lbbody img{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+
+  <!-- masthead -->
+  <header class="masthead">
+    <div class="wrap">
+      <div class="flag">
+        <div class="flagrow"><img src="assets/mark-eye.png" alt="" /><span class="name">Bhanu Cheepurupalli</span></div>
+        <div class="strap">Policy · Rights · Governance</div>
+        <nav class="pills">
+          <a href="index.html">Profile</a>
+          <a href="Work.html" class="on">Work</a>
+          <a href="Play.html">Play</a>
+          <a href="About.html">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- press hero -->
+  <div class="record">
+    <div class="wrap">
+      <div class="top"><span>B_Cheepurupalli_ARCHIVES</span><span class="mk">◉ Selected Evidence · Vol. 01</span><span>Princeton · 2026</span></div>
+      <div class="hero">
+        <div class="kicker">A working archive of my research, evaluation &amp; investigation</div>
+        <h1>My <mark>Samples</mark></h1>
+        <div class="deck">The Index.</div>
+        <p class="blurb">Six years across the UN system, human-rights archives, Indigenous-led field investigations, and now congressional oversight of frontier AI. Some of it is image-rich; some of it is quiet documents. Featured projects first, then a complete index below. Reach out for anything not public.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLAGSHIP -->
+  <div class="wrap">
+    <section class="block" style="border-top:none;">
+      <div class="shead"><span class="sn">§01</span><h2>Now building</h2><span class="smeta">live</span></div>
+      <div class="flagship">
+        <div class="fbar">
+          <span class="ftag">AI Governance</span>
+          <span class="fttl">Congressional Oversight Tracker</span>
+          <span class="fstat">Live · updated regularly</span>
+        </div>
+        <div class="fbody">
+          <div class="browser">
+            <div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">bhanurl.github.io/AIWI_civictriage</span></div>
+            <iframe src="https://bhanurl.github.io/AIWI_civictriage/index.html" title="AI Whistleblower Initiative — Civic Triage tracker"></iframe>
+          </div>
+          <div class="fdesc">
+            <div class="role">AI Whistleblower Initiative · CORDA Democracy Scholar</div>
+            <p>I lead a research team building civic-transparency trackers on how Congress oversees frontier AI labs and national-security risk — compiling and verifying legislative and public-record sources into structured, regularly-updated records.</p>
+            <p>An accompanying research report is in progress; charts and findings will be added here as it develops.</p>
+            <div class="flinks">
+              <a href="https://bhanurl.github.io/AIWI_civictriage/index.html" target="_blank" rel="noopener"><span>Open the live tracker</span><span>↗</span></a>
+              <a href="#charts"><span>Methodology &amp; charts</span><span>↓ see below</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="wrap">
+    <section class="block charts" id="charts" style="padding-top:34px;">
+      <div class="shead"><span class="sn">§01·b</span><h2>Methodology &amp; frameworks</h2><span class="smeta">the scaffolding behind the tracker · click to enlarge</span></div>
+      <div class="chgrid">
+        <div class="chcard" data-src="assets/work/charts/theory-of-change.svg" data-title="Tracker theory of change, 2.1 pilot"><div class="chimg"><img src="assets/work/charts/theory-of-change.svg" alt="Tracker theory of change" /></div><div class="chcap"><span class="cn">Framework</span><div class="ct">Theory of change</div></div></div>
+        <div class="chcard" data-src="assets/work/charts/fork-map.svg" data-title="Instrument-design fork map"><div class="chimg"><img src="assets/work/charts/fork-map.svg" alt="Instrument-design fork map" /></div><div class="chcap"><span class="cn">Method</span><div class="ct">Design fork map</div></div></div>
+        <div class="chcard" data-src="assets/work/charts/causal-dag.svg" data-title="Field-level causal graph, three competing edge-sets"><div class="chimg"><img src="assets/work/charts/causal-dag.svg" alt="Causal graph" /></div><div class="chcap"><span class="cn">Analysis</span><div class="ct">Causal edge-sets</div></div></div>
+        <div class="chcard" data-src="assets/work/charts/label-derivation.svg" data-title="Position-label derivation logic"><div class="chimg"><img src="assets/work/charts/label-derivation.svg" alt="Label derivation logic" /></div><div class="chcap"><span class="cn">Logic</span><div class="ct">Label derivation</div></div></div>
+        <div class="chcard" data-src="assets/work/charts/firewall-crosswalk.svg" data-title="Register firewall and crosswalk"><div class="chimg"><img src="assets/work/charts/firewall-crosswalk.svg" alt="Register firewall" /></div><div class="chcap"><span class="cn">Architecture</span><div class="ct">Register firewall</div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="wrap">
+    <section class="block">
+      <div class="shead"><span class="sn">§02</span><h2>Selected Evidence</h2><span class="smeta">field, evaluation &amp; advocacy</span></div>
+      <div class="gal">
+
+        <article class="proj">
+          <div class="pimg"><img src="assets/work/unicef-evaluating.png" alt="UNICEF evaluation blog post" /></div>
+          <div class="pbody">
+            <span class="ptag">UNICEF · Evaluation</span>
+            <h3>Evaluating Advocacy as a Change Strategy</h3>
+            <p>Co-authored two UNICEF Evaluation Office pieces on how advocacy drives results for children — and how to measure that impact — with Erica Mattellone. Built the accompanying management-response dashboard.</p>
+            <a class="plink" href="https://www.unicef.org/evaluation/blog/advocacy-change-strategy" target="_blank" rel="noopener">Read on unicef.org ↗</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="pimg duo"><img src="assets/work/cambodia-steps.jpg" alt="Cambodia fieldwork" /><img src="assets/work/cambodia-temple.jpg" alt="Lower Mekong" /></div>
+          <div class="pbody">
+            <span class="ptag">Oxfam · Human Rights</span>
+            <h3>Protecting the Lower Mekong</h3>
+            <p>A field investigation in Ratanakiri with the Indigenous Jarai community, documenting environmental and labor-rights violations in a critical-minerals negotiation and informing Free, Prior &amp; Informed Consent consultations.</p>
+            <a class="plink" href="https://cambodia.oxfam.org/PEM" target="_blank" rel="noopener">Oxfam PEM evaluation ↗</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="pimg" style="background:var(--cream-2);"><img src="https://images.routledge.com/common/jackets/crclarge/978103202/9781032028101.jpg" alt="Genocide: A Comprehensive Introduction — cover" style="object-fit:contain;" /></div>
+          <div class="pbody">
+            <span class="ptag">Routledge · Published</span>
+            <h3>Genocide: A Comprehensive Introduction</h3>
+            <p>Researched ecocide and gendered violence across South Asia for Dr. Adam Jones's textbook (Routledge) — and separately led a 10-person team across the Mgrublian and Roberts Environmental centers, under Prof. Wendy Lower, studying that body of work.</p>
+            <a class="plink" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="pimg"><img src="assets/work/12hoa-megaphone.jpg" alt="12 Hours of Action for Black Lives" /></div>
+          <div class="pbody">
+            <span class="ptag">Amnesty · Advocacy</span>
+            <h3>12 Hours of Action for Black Lives</h3>
+            <p>A youth-led criminal-justice campaign I created and ran as Amnesty International chapter president — 800 global participants and the ActivismX Award.</p>
+            <a class="plink" href="#">Event archive ↗</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="pimg"><img src="assets/work/envirolab-scallops.png" alt="EnviroLab Scallops and Seaweed" /></div>
+          <div class="pbody">
+            <span class="ptag">Luce · EnviroLab Asia</span>
+            <h3>Scallops &amp; Seaweed</h3>
+            <p>Emerging aquaculture industries in Maine and their implications for globalization — including research on federal SBIR grant accessibility for low-income farmers.</p>
+            <a class="plink" href="https://sites.google.com/students.claremontmckenna.edu/envirolab/home" target="_blank" rel="noopener">View the EnviroLab site ↗</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="pimg"><img src="assets/work/therapeutic-landscapes.png" alt="Therapeutic Landscapes site" /></div>
+          <div class="pbody">
+            <span class="ptag">Keck Center · Research</span>
+            <h3>Therapeutic Landscapes</h3>
+            <p>An investigation of Asian-American houses of worship as sites of relief and resilience during COVID-19 — a built digital exhibit of gallery, spotlights, and reflection.</p>
+            <a class="plink" href="#">View the project ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ACADEMIC -->
+  <div class="wrap">
+    <section class="block">
+      <div class="shead"><span class="sn">§03</span><h2>Academic Research</h2><span class="smeta">independent studies across disciplines</span></div>
+      <div class="acad">
+        <div class="acard">
+          <div class="ai"><img src="assets/work/academic-hgt.png" alt="Kerala floods remote sensing" /></div>
+          <div class="ab">
+            <div class="at">Geospatial · Climate</div>
+            <h4>Remote Sensing &amp; the 2018 Kerala Floods</h4>
+            <p>Using satellite imagery and GIS to understand the human impact of a climate disaster.</p>
+          </div>
+        </div>
+        <div class="acard">
+          <div class="ai"><img src="assets/work/academic-kerala.png" alt="Horizontal gene transfer study" /></div>
+          <div class="ab">
+            <div class="at">Genomics · Inquiry</div>
+            <h4>Evidence of HGT in Accession AXF52043.1</h4>
+            <p>An independent bioinformatics study identifying evidence of horizontal gene transfer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- RECOGNITION + WORKED WITH -->
+  <div class="wrap">
+    <section class="block">
+      <div class="twocol">
+        <div class="recog">
+          <div class="shead" style="margin-bottom:20px;"><span class="sn">§04</span><h2>Honors &amp; Recognition</h2></div>
+          <div class="ritem"><span class="ry">2024</span><span class="rt"><b>Harry S. Truman Scholarship Finalist</b> — national recognition for public-service leadership (New Jersey).</span></div>
+          <div class="ritem"><span class="ry">2025</span><span class="rt"><b>Presidential Research Fund Recipient</b> — funding senior-thesis fieldwork on Hong Kong's democratic crisis.</span></div>
+          <div class="ritem"><span class="ry">2023</span><span class="rt"><b>Best Pitch, Oxford Venture Capital Network</b> — investment memo on an AI-driven construction-technology spinout.</span></div>
+          <div class="ritem"><span class="ry">2023</span><span class="rt"><b>Future Impact Group Research Residency</b> — selected research scholar, Oxford.</span></div>
+          <div class="ritem"><span class="ry">2022</span><span class="rt"><b>ActivismX Award</b> — for the 12 Hours of Action campaign (800 participants).</span></div>
+          <div class="ritem"><span class="ry">2021–25</span><span class="rt"><b>McKenna Achievement Scholar</b> — Claremont McKenna College.</span></div>
+          <div class="ritem"><span class="ry">2023</span><span class="rt"><b>UNGA Special Events Youth Delegate</b> — African Leaders Factory Initiative.</span></div>
+        </div>
+        <div class="worked">
+          <div class="shead" style="margin-bottom:20px;"><span class="sn">§05</span><h2>Worked with</h2></div>
+          <p class="skh">Institutions &amp; teams</p>
+          <div class="wlist">
+            <span>UNICEF Evaluation Office</span><span>Oxfam</span><span>Amnesty International</span><span>U.S. House Oversight</span><span>AI Whistleblower Initiative</span><span>Global Priorities Institute, Oxford</span><span>Keck Center</span><span>Mgrublian Center for Human Rights</span><span>Luce / EnviroLab Asia</span><span>Routledge</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WRITING -->
+  <div class="wrap">
+    <section class="block" id="writing">
+      <div class="shead"><span class="sn">§06</span><h2>Writing</h2><span class="smeta">published &amp; co-authored</span></div>
+      <div class="writing">
+        <div class="wrow"><span class="wt">Advocacy as a Change Strategy<span class="wsub">UNICEF Evaluation Office · with Erica Mattellone</span></span><a class="wlink" href="https://www.unicef.org/evaluation/blog/advocacy-change-strategy" target="_blank" rel="noopener">unicef.org ↗</a></div>
+        <div class="wrow"><span class="wt">Evaluating Advocacy for Greater Impact for Children<span class="wsub">UNICEF Evaluation Office · with Erica Mattellone</span></span><a class="wlink" href="https://www.unicef.org/evaluation/blog/evaluating-advocacy-achieving-greater-impact-children" target="_blank" rel="noopener">unicef.org ↗</a></div>
+        <div class="wrow"><span class="wt">Genocide: A Comprehensive Introduction<span class="wsub">Routledge · research &amp; source verification</span></span><a class="wlink" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a></div>
+        <div class="wrow" id="fortnerRow" style="cursor:pointer;"><span class="wt">“Crack”: Race, National Security &amp; Domestic Criminalization<span class="wsub">with Michael Javen Fortner &amp; Aria Fafat · forthcoming</span></span><span class="wlink">Read an excerpt →</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- INDEX CV -->
+  <div class="wrap">
+    <section class="block">
+      <div class="shead"><span class="sn">§07</span><h2>The Index</h2><span class="smeta">full record · distilled · CV on request</span></div>
+      <div class="index">
+        <div class="xrow"><span class="xtag">AI Governance</span><span class="xorg">AI Whistleblower Initiative<span class="xrole">CORDA Democracy Scholar</span></span><span class="xdesc">Civic-transparency trackers on congressional oversight of frontier AI &amp; national security.</span><span class="xyr">2026 —</span></div>
+        <div class="xrow"><span class="xtag">Legal · Oversight</span><span class="xorg">U.S. House Committee on Oversight<span class="xrole">Democratic Oversight Fellow</span></span><span class="xdesc">Supporting congressional oversight and investigations with the Committee's Democratic staff.</span><span class="xyr">Incoming</span></div>
+        <div class="xrow"><span class="xtag">Evaluation</span><span class="xorg">UNICEF Evaluation Office<span class="xrole">Institutional Effectiveness Intern</span></span><span class="xdesc">Co-led a gender-policy evaluation; built an organization-wide management-response dashboard.</span><span class="xyr">2023–24</span></div>
+        <div class="xrow"><span class="xtag">Human Rights</span><span class="xorg">Oxfam Cambodia<span class="xrole">Extractive Industries Fellow</span></span><span class="xdesc">Field investigation with Indigenous Jarai leaders in a critical-minerals negotiation.</span><span class="xyr">2022</span></div>
+        <div class="xrow"><span class="xtag">Research</span><span class="xorg">Mgrublian Center for Human Rights<span class="xrole">Research Lead</span></span><span class="xdesc">Research for Dr. Adam Jones's Genocide textbook; led a 10-person team across two research centers under Prof. Wendy Lower.</span><span class="xyr">2021–25</span></div>
+        <div class="xrow"><span class="xtag">Advocacy</span><span class="xorg">Amnesty International — Claremont<span class="xrole">Chapter President</span></span><span class="xdesc">Built the youth-led “12 Hours of Action” campaign — 800 participants, ActivismX Award.</span><span class="xyr">2021–24</span></div>
+        <div class="xrow"><span class="xtag">Research</span><span class="xorg">Keck Center for Strategic Studies<span class="xrole">Researcher</span></span><span class="xdesc">Co-authored a study on U.S. foreign policy &amp; counter-narcotics enforcement.</span><span class="xyr">2021–25</span></div>
+        <div class="xrow"><span class="xtag">Development</span><span class="xorg">Global Priorities Institute, Oxford<span class="xrole">Development Researcher</span></span><span class="xdesc">Analyzed foreign-aid decisions across ASEAN economies using IMF &amp; World Bank data.</span><span class="xyr">2023–24</span></div>
+        <div class="xrow"><span class="xtag">Climate · Econ</span><span class="xorg">Luce Initiative · EnviroLab Asia<span class="xrole">Globalization Scholar</span></span><span class="xdesc">Researched federal grant accessibility for low-income farmers and green-tech strategy.</span><span class="xyr">2022–23</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap inner">
+      <img src="assets/mark-eye.png" alt="" />
+      <span class="fname">Bhanu Cheepurupalli</span>
+      <div class="fcta"><a href="About.html">Work with me →</a></div>
+      <div class="fmeta"><a href="index.html">Profile</a> · Work · <a href="Play.html">Play</a> &nbsp;·&nbsp; © 2026 · built on GitHub Pages</div>
+    </div>
+  </footer>
+
+  <!-- ===== FORTNER PAPER EXCERPT MODAL ===== -->
+  <div class="pmscrim" id="pmScrim">
+    <div class="pmbox">
+      <div class="pmhd">
+        <div class="pmk">◉ Forthcoming · working paper</div>
+        <h3>“Crack”: Race, National Security &amp; Domestic Criminalization</h3>
+        <div class="auth">Michael Javen Fortner, Bhanu Cheepurupalli &amp; Aria Fafat</div>
+      </div>
+      <div class="pmbody">
+        <p class="first">Early in the Reagan administration, the politics of drugs and the politics of “illegal immigrants” were treated as two sides of the same coin. This paper traces how 1980s drug enforcement fused race, immigration status, and the language of national security — and how that fusion reshaped who got policed, and how.</p>
+        <p class="q">Harlem, one witness told a House narcotics committee, was “under siege” — locked in a “battle” over who would control the community.</p>
+        <p>Drawing on congressional hearings, DEA reports, and the correspondence of figures like Rep. Charlie Rangel, we follow the paper trail: from Miami Chamber of Commerce memos urging that the Coast Guard be redirected toward “drugs and illegal aliens,” to calls for the INS to verify the status of those arrested on narcotics charges and “promptly deport” them.</p>
+        <p>What emerges is a domestic-criminalization regime in which the “crack” panic and immigration enforcement were built together — a history whose shadows fall across today's debates over policing, security, and belonging.</p>
+      </div>
+      <div class="pmft">
+        <span class="note">Draft excerpt · full paper forthcoming</span>
+        <button type="button" id="pmClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var r=document.getElementById('fortnerRow'), s=document.getElementById('pmScrim');
+  if(!r||!s) return;
+  r.addEventListener('click',function(){ s.classList.add('show'); });
+  function cl(){ s.classList.remove('show'); }
+  s.addEventListener('click',function(e){ if(e.target===s)cl(); });
+  var b=document.getElementById('pmClose'); if(b)b.addEventListener('click',cl);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape')cl(); });
+})();
+</script>
+  <!-- CHART LIGHTBOX -->
+  <div class="chlb" id="chLb">
+    <div class="lbinner">
+      <div class="lbhd"><span class="lbt" id="lbTitle"></span><button class="lbclose" id="lbClose" aria-label="Close">✕</button></div>
+      <div class="lbbody"><img id="lbImg" src="" alt="" /></div>
+    </div>
+  </div>
+<script>
+(function(){
+  var lb=document.getElementById('chLb'), img=document.getElementById('lbImg'), ttl=document.getElementById('lbTitle');
+  if(!lb) return;
+  document.querySelectorAll('.chcard').forEach(function(c){
+    c.addEventListener('click',function(){
+      img.src=c.getAttribute('data-src'); ttl.textContent=c.getAttribute('data-title');
+      lb.classList.add('show');
+    });
+  });
+  function cl(){ lb.classList.remove('show'); }
+  document.getElementById('lbClose').addEventListener('click',cl);
+  lb.addEventListener('click',function(e){ if(e.target===lb)cl(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape')cl(); });
+})();
+</script>
+</body>
+</html>
