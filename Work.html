@@ -44,7 +44,7 @@
   .record .top .mk{ color:var(--terra-dk); font-weight:700; }
   .hero{ padding:46px 0 40px; }
   .hero .kicker{ font-family:var(--space); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; }
-  .hero h1{ font-family:var(--courier); font-weight:700; font-size:clamp(40px,7vw,82px); line-height:0.92; text-transform:uppercase; letter-spacing:0.01em; margin:14px 0 0; }
+  .hero h1{ font-family:var(--serif); font-weight:400; font-size:clamp(48px,8.5vw,96px); line-height:0.95; text-transform:none; letter-spacing:0; margin:14px 0 0; }
   .hero h1 mark{ background:var(--marigold); color:var(--ink); padding:0 10px; }
   .hero .deck{ font-family:var(--serif); font-style:italic; font-size:clamp(22px,3vw,30px); color:var(--ink-soft); margin:18px 0 0; max-width:30ch; }
   .hero .blurb{ font-family:var(--courier); font-size:15px; color:var(--ink-soft); max-width:62ch; margin:22px 0 0; column-gap:40px; }
@@ -95,13 +95,19 @@
 
   /* academic strip */
   .acad{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-  .acard{ border:1px solid var(--rule); background:var(--paper); display:grid; grid-template-columns:150px 1fr; overflow:hidden; }
-  .acard .ai{ background:var(--cream-2); overflow:hidden; }
+  .acard{ border:1px solid var(--rule); background:var(--paper); display:grid; grid-template-columns:210px 1fr; overflow:hidden; transition:transform .15s, border-color .15s; }
+  .acard.link:hover{ transform:translateY(-3px); border-color:var(--ink); }
+  .acard .ai{ background:var(--cream-2); overflow:hidden; min-height:180px; }
   .acard .ai img{ width:100%; height:100%; object-fit:cover; }
-  .acard .ab{ padding:18px 20px; }
-  .acard .at{ font-family:var(--space); font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
-  .acard h4{ font-family:var(--serif); font-weight:400; font-size:19px; line-height:1.1; margin:6px 0 7px; }
-  .acard p{ font-family:var(--courier); font-size:12px; color:var(--ink-soft); margin:0; line-height:1.45; }
+  .acard .ai.cover{ background:var(--ink); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; padding:18px; text-align:center; }
+  .acard .ai.cover .covk{ font-family:var(--space); font-size:8.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--marigold); }
+  .acard .ai.cover .covt{ font-family:var(--serif); font-size:40px; line-height:0.92; color:var(--cream); }
+  .acard .ai.cover .covr{ width:34px; height:1px; background:rgba(233,167,44,0.6); }
+  .acard .ab{ padding:22px 24px; display:flex; flex-direction:column; }
+  .acard .at{ font-family:var(--space); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .acard h4{ font-family:var(--serif); font-weight:400; font-size:22px; line-height:1.1; margin:7px 0 9px; }
+  .acard p{ font-family:var(--courier); font-size:13px; color:var(--ink-soft); margin:0; line-height:1.5; }
+  .acard .alink{ margin-top:12px; font-family:var(--space); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--terra-dk); }
 
   /* recognition + worked-with */
   .twocol{ display:grid; grid-template-columns:1.1fr 1fr; gap:50px; }
@@ -148,7 +154,7 @@
     .gal,.acad,.twocol{ grid-template-columns:1fr; }
     .xrow{ grid-template-columns:1fr; gap:4px; }
     .xrow .xtag{ order:-1; } .xrow .xyr{ text-align:left; }
-    .acard{ grid-template-columns:110px 1fr; }
+    .acard{ grid-template-columns:140px 1fr; }
   }
   /* paper excerpt modal */
   .pmscrim{ position:fixed; inset:0; background:rgba(20,16,10,0.6); opacity:0; pointer-events:none; transition:opacity .2s; z-index:90; display:flex; align-items:center; justify-content:center; padding:24px; }
@@ -206,38 +212,63 @@
   <!-- press hero -->
   <div class="record">
     <div class="wrap">
-      <div class="top"><span>B_Cheepurupalli_ARCHIVES</span><span class="mk">◉ Selected Evidence · Vol. 01</span><span>Princeton · 2026</span></div>
+      <div class="top"><span>B_Cheepurupalli_ARCHIVES</span><span class="mk">◉ Highlighted Work · Vol. 01</span><span>Princeton · 2026</span></div>
       <div class="hero">
         <div class="kicker">A working archive of my research, evaluation &amp; investigation</div>
         <h1>My <mark>Samples</mark></h1>
         <div class="deck">The Index.</div>
-        <p class="blurb">Six years across the UN system, human-rights archives, Indigenous-led field investigations, and now congressional oversight of frontier AI. Some of it is image-rich; some of it is quiet documents. Featured projects first, then a complete index below. Reach out for anything not public.</p>
+        <p class="blurb">Research, evaluation, and field investigation across the UN system, human-rights archives, Indigenous-led fieldwork, and now congressional oversight of frontier AI. Some of it is image-rich; some of it is quiet documents. Featured projects first, then a complete index below. Reach out for anything not public.</p>
       </div>
     </div>
   </div>
 
-  <!-- FLAGSHIP -->
+  <!-- WORKING ON -->
   <div class="wrap">
     <section class="block" style="border-top:none;">
-      <div class="shead"><span class="sn">§01</span><h2>Now building</h2><span class="smeta">live</span></div>
+      <div class="shead"><span class="sn">§01</span><h2>Working on</h2><span class="smeta">live</span></div>
+
       <div class="flagship">
         <div class="fbar">
           <span class="ftag">AI Governance</span>
-          <span class="fttl">Congressional Oversight Tracker</span>
-          <span class="fstat">Live · updated regularly</span>
+          <span class="fttl">Isegoria — Congressional AI Oversight Tracker</span>
+          <span class="fstat">Live · updated in public</span>
         </div>
         <div class="fbody">
           <div class="browser">
             <div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">bhanurl.github.io/AIWI_civictriage</span></div>
-            <iframe src="https://bhanurl.github.io/AIWI_civictriage/index.html" title="AI Whistleblower Initiative — Civic Triage tracker"></iframe>
+            <iframe src="https://bhanurl.github.io/AIWI_civictriage/index.html" title="Isegoria — Congressional AI Governance &amp; Oversight Tracker" loading="lazy"></iframe>
           </div>
           <div class="fdesc">
-            <div class="role">AI Whistleblower Initiative · CORDA Democracy Scholar</div>
-            <p>I lead a research team building civic-transparency trackers on how Congress oversees frontier AI labs and national-security risk — compiling and verifying legislative and public-record sources into structured, regularly-updated records.</p>
-            <p>An accompanying research report is in progress; charts and findings will be added here as it develops.</p>
+            <div class="role">AI Whistleblower Initiative · CORDA Democracy</div>
+            <p>I lead the team building <strong>Isegoria</strong> — a nonpartisan public record of how the 119th Congress engages with who writes the rules for AI inside the national-security state, and whether the machinery of oversight still holds.</p>
+            <p>It is built so what it <em>declines</em> to do is as legible as what it does: no composite score, no ranking, and silence is never read as opposition. An accompanying research report is in progress.</p>
             <div class="flinks">
               <a href="https://bhanurl.github.io/AIWI_civictriage/index.html" target="_blank" rel="noopener"><span>Open the live tracker</span><span>↗</span></a>
-              <a href="#charts"><span>Methodology &amp; charts</span><span>↓ see below</span></a>
+              <a href="https://bhanurl.github.io/AIWI_civictriage/report.html" target="_blank" rel="noopener"><span>Read the research report</span><span>↗</span></a>
+              <a href="https://github.com/bhanurl/AIWI_civictriage" target="_blank" rel="noopener"><span>View the repository</span><span>↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flagship" style="margin-top:22px;">
+        <div class="fbar">
+          <span class="ftag">AI Governance</span>
+          <span class="fttl">ARIA — Responsibility &amp; Institutional Accountability</span>
+          <span class="fstat">Demo · methodology v2.0</span>
+        </div>
+        <div class="fbody">
+          <div class="browser">
+            <div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">bhanurl.github.io/ARIAdemo</span></div>
+            <iframe src="https://bhanurl.github.io/ARIAdemo/index.html" title="ARIA — AI Responsibility and Institutional Accountability demo" loading="lazy"></iframe>
+          </div>
+          <div class="fdesc">
+            <div class="role">AI Whistleblower Initiative · public-interest demo</div>
+            <p><strong>ARIA</strong> is a public-interest demonstration of the tracker's method: for each member, on each critical oversight moment, it reports a fixed institutional position — <em>Asserts · Defers · Mixed · Not documented</em> — never a score or a leaderboard.</p>
+            <p>All members shown are synthesized illustrations of the instrument's states, so the methodology can be read end-to-end before any verified dataset goes live.</p>
+            <div class="flinks">
+              <a href="https://bhanurl.github.io/ARIAdemo/index.html" target="_blank" rel="noopener"><span>Open the demo</span><span>↗</span></a>
+              <a href="https://github.com/bhanurl/ARIAdemo" target="_blank" rel="noopener"><span>View the repository</span><span>↗</span></a>
             </div>
           </div>
         </div>
@@ -245,24 +276,10 @@
     </section>
   </div>
 
-  <!-- CHARTS -->
-  <div class="wrap">
-    <section class="block charts" id="charts" style="padding-top:34px;">
-      <div class="shead"><span class="sn">§01·b</span><h2>Methodology &amp; frameworks</h2><span class="smeta">the scaffolding behind the tracker · click to enlarge</span></div>
-      <div class="chgrid">
-        <div class="chcard" data-src="assets/work/charts/theory-of-change.svg" data-title="Tracker theory of change, 2.1 pilot"><div class="chimg"><img src="assets/work/charts/theory-of-change.svg" alt="Tracker theory of change" /></div><div class="chcap"><span class="cn">Framework</span><div class="ct">Theory of change</div></div></div>
-        <div class="chcard" data-src="assets/work/charts/fork-map.svg" data-title="Instrument-design fork map"><div class="chimg"><img src="assets/work/charts/fork-map.svg" alt="Instrument-design fork map" /></div><div class="chcap"><span class="cn">Method</span><div class="ct">Design fork map</div></div></div>
-        <div class="chcard" data-src="assets/work/charts/causal-dag.svg" data-title="Field-level causal graph, three competing edge-sets"><div class="chimg"><img src="assets/work/charts/causal-dag.svg" alt="Causal graph" /></div><div class="chcap"><span class="cn">Analysis</span><div class="ct">Causal edge-sets</div></div></div>
-        <div class="chcard" data-src="assets/work/charts/label-derivation.svg" data-title="Position-label derivation logic"><div class="chimg"><img src="assets/work/charts/label-derivation.svg" alt="Label derivation logic" /></div><div class="chcap"><span class="cn">Logic</span><div class="ct">Label derivation</div></div></div>
-        <div class="chcard" data-src="assets/work/charts/firewall-crosswalk.svg" data-title="Register firewall and crosswalk"><div class="chimg"><img src="assets/work/charts/firewall-crosswalk.svg" alt="Register firewall" /></div><div class="chcap"><span class="cn">Architecture</span><div class="ct">Register firewall</div></div></div>
-      </div>
-    </section>
-  </div>
-
   <!-- GALLERY -->
   <div class="wrap">
     <section class="block">
-      <div class="shead"><span class="sn">§02</span><h2>Selected Evidence</h2><span class="smeta">field, evaluation &amp; advocacy</span></div>
+      <div class="shead"><span class="sn">§02</span><h2>Highlighted work</h2><span class="smeta">field, evaluation &amp; advocacy</span></div>
       <div class="gal">
 
         <article class="proj">
@@ -286,16 +303,6 @@
         </article>
 
         <article class="proj">
-          <div class="pimg" style="background:var(--cream-2);"><img src="https://images.routledge.com/common/jackets/crclarge/978103202/9781032028101.jpg" alt="Genocide: A Comprehensive Introduction — cover" style="object-fit:contain;" /></div>
-          <div class="pbody">
-            <span class="ptag">Routledge · Published</span>
-            <h3>Genocide: A Comprehensive Introduction</h3>
-            <p>Researched ecocide and gendered violence across South Asia for Dr. Adam Jones's textbook (Routledge) — and separately led a 10-person team across the Mgrublian and Roberts Environmental centers, under Prof. Wendy Lower, studying that body of work.</p>
-            <a class="plink" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a>
-          </div>
-        </article>
-
-        <article class="proj">
           <div class="pimg"><img src="assets/work/12hoa-megaphone.jpg" alt="12 Hours of Action for Black Lives" /></div>
           <div class="pbody">
             <span class="ptag">Amnesty · Advocacy</span>
@@ -315,16 +322,6 @@
           </div>
         </article>
 
-        <article class="proj">
-          <div class="pimg"><img src="assets/work/therapeutic-landscapes.png" alt="Therapeutic Landscapes site" /></div>
-          <div class="pbody">
-            <span class="ptag">Keck Center · Research</span>
-            <h3>Therapeutic Landscapes</h3>
-            <p>An investigation of Asian-American houses of worship as sites of relief and resilience during COVID-19 — a built digital exhibit of gallery, spotlights, and reflection.</p>
-            <a class="plink" href="#">View the project ↗</a>
-          </div>
-        </article>
-
       </div>
     </section>
   </div>
@@ -332,7 +329,7 @@
   <!-- ACADEMIC -->
   <div class="wrap">
     <section class="block">
-      <div class="shead"><span class="sn">§03</span><h2>Academic Research</h2><span class="smeta">independent studies across disciplines</span></div>
+      <div class="shead"><span class="sn">§03</span><h2>Academic Research</h2><span class="smeta">papers, studies &amp; built projects</span></div>
       <div class="acad">
         <div class="acard">
           <div class="ai"><img src="assets/work/academic-hgt.png" alt="Kerala floods remote sensing" /></div>
@@ -350,6 +347,37 @@
             <p>An independent bioinformatics study identifying evidence of horizontal gene transfer.</p>
           </div>
         </div>
+        <div class="acard link">
+          <div class="ai"><img src="https://images.routledge.com/common/jackets/crclarge/978103202/9781032028101.jpg" alt="Genocide: A Comprehensive Introduction — cover" style="object-fit:contain;background:var(--cream-2);" /></div>
+          <div class="ab">
+            <div class="at">Routledge · Published</div>
+            <h4>Genocide: A Comprehensive Introduction</h4>
+            <p>Researched ecocide and gendered violence across South Asia for Dr. Adam Jones's textbook — and led a 10-person team across the Mgrublian and Roberts Environmental centers, under Prof. Wendy Lower.</p>
+            <a class="alink" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a>
+          </div>
+        </div>
+        <div class="acard link">
+          <div class="ai"><img src="assets/work/therapeutic-landscapes.png" alt="Therapeutic Landscapes site" /></div>
+          <div class="ab">
+            <div class="at">Keck Center · Digital exhibit</div>
+            <h4>Therapeutic Landscapes</h4>
+            <p>Asian-American houses of worship as sites of relief and resilience during COVID-19 — a built digital exhibit of gallery, spotlights, and reflection.</p>
+            <a class="alink" href="#">View the project ↗</a>
+          </div>
+        </div>
+        <div class="acard link" id="fortnerRow" style="cursor:pointer;">
+          <div class="ai cover">
+            <span class="covk">Keck Center · Forthcoming</span>
+            <span class="covt">“Crack”</span>
+            <span class="covr"></span>
+          </div>
+          <div class="ab">
+            <div class="at">Keck Center · Working paper</div>
+            <h4>“Crack”: Race, National Security &amp; Domestic Criminalization</h4>
+            <p>Co-authored with Michael Javen Fortner &amp; Aria Fafat — how 1980s drug enforcement fused race, immigration status, and the language of national security.</p>
+            <a class="alink">Read an excerpt →</a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -357,8 +385,7 @@
   <!-- RECOGNITION + WORKED WITH -->
   <div class="wrap">
     <section class="block">
-      <div class="twocol">
-        <div class="recog">
+      <div class="recog">
           <div class="shead" style="margin-bottom:20px;"><span class="sn">§04</span><h2>Honors &amp; Recognition</h2></div>
           <div class="ritem"><span class="ry">2024</span><span class="rt"><b>Harry S. Truman Scholarship Finalist</b> — national recognition for public-service leadership (New Jersey).</span></div>
           <div class="ritem"><span class="ry">2025</span><span class="rt"><b>Presidential Research Fund Recipient</b> — funding senior-thesis fieldwork on Hong Kong's democratic crisis.</span></div>
@@ -368,37 +395,15 @@
           <div class="ritem"><span class="ry">2021–25</span><span class="rt"><b>McKenna Achievement Scholar</b> — Claremont McKenna College.</span></div>
           <div class="ritem"><span class="ry">2023</span><span class="rt"><b>UNGA Special Events Youth Delegate</b> — African Leaders Factory Initiative.</span></div>
         </div>
-        <div class="worked">
-          <div class="shead" style="margin-bottom:20px;"><span class="sn">§05</span><h2>Worked with</h2></div>
-          <p class="skh">Institutions &amp; teams</p>
-          <div class="wlist">
-            <span>UNICEF Evaluation Office</span><span>Oxfam</span><span>Amnesty International</span><span>U.S. House Oversight</span><span>AI Whistleblower Initiative</span><span>Global Priorities Institute, Oxford</span><span>Keck Center</span><span>Mgrublian Center for Human Rights</span><span>Luce / EnviroLab Asia</span><span>Routledge</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- WRITING -->
-  <div class="wrap">
-    <section class="block" id="writing">
-      <div class="shead"><span class="sn">§06</span><h2>Writing</h2><span class="smeta">published &amp; co-authored</span></div>
-      <div class="writing">
-        <div class="wrow"><span class="wt">Advocacy as a Change Strategy<span class="wsub">UNICEF Evaluation Office · with Erica Mattellone</span></span><a class="wlink" href="https://www.unicef.org/evaluation/blog/advocacy-change-strategy" target="_blank" rel="noopener">unicef.org ↗</a></div>
-        <div class="wrow"><span class="wt">Evaluating Advocacy for Greater Impact for Children<span class="wsub">UNICEF Evaluation Office · with Erica Mattellone</span></span><a class="wlink" href="https://www.unicef.org/evaluation/blog/evaluating-advocacy-achieving-greater-impact-children" target="_blank" rel="noopener">unicef.org ↗</a></div>
-        <div class="wrow"><span class="wt">Genocide: A Comprehensive Introduction<span class="wsub">Routledge · research &amp; source verification</span></span><a class="wlink" href="https://www.routledge.com/Genocide-A-Comprehensive-Introduction/Jones/p/book/9781032028101" target="_blank" rel="noopener">Routledge ↗</a></div>
-        <div class="wrow" id="fortnerRow" style="cursor:pointer;"><span class="wt">“Crack”: Race, National Security &amp; Domestic Criminalization<span class="wsub">with Michael Javen Fortner &amp; Aria Fafat · forthcoming</span></span><span class="wlink">Read an excerpt →</span></div>
-      </div>
     </section>
   </div>
 
   <!-- INDEX CV -->
   <div class="wrap">
     <section class="block">
-      <div class="shead"><span class="sn">§07</span><h2>The Index</h2><span class="smeta">full record · distilled · CV on request</span></div>
+      <div class="shead"><span class="sn">§05</span><h2>The Index</h2><span class="smeta">full record · distilled · CV on request</span></div>
       <div class="index">
         <div class="xrow"><span class="xtag">AI Governance</span><span class="xorg">AI Whistleblower Initiative<span class="xrole">CORDA Democracy Scholar</span></span><span class="xdesc">Civic-transparency trackers on congressional oversight of frontier AI &amp; national security.</span><span class="xyr">2026 —</span></div>
-        <div class="xrow"><span class="xtag">Legal · Oversight</span><span class="xorg">U.S. House Committee on Oversight<span class="xrole">Democratic Oversight Fellow</span></span><span class="xdesc">Supporting congressional oversight and investigations with the Committee's Democratic staff.</span><span class="xyr">Incoming</span></div>
         <div class="xrow"><span class="xtag">Evaluation</span><span class="xorg">UNICEF Evaluation Office<span class="xrole">Institutional Effectiveness Intern</span></span><span class="xdesc">Co-led a gender-policy evaluation; built an organization-wide management-response dashboard.</span><span class="xyr">2023–24</span></div>
         <div class="xrow"><span class="xtag">Human Rights</span><span class="xorg">Oxfam Cambodia<span class="xrole">Extractive Industries Fellow</span></span><span class="xdesc">Field investigation with Indigenous Jarai leaders in a critical-minerals negotiation.</span><span class="xyr">2022</span></div>
         <div class="xrow"><span class="xtag">Research</span><span class="xorg">Mgrublian Center for Human Rights<span class="xrole">Research Lead</span></span><span class="xdesc">Research for Dr. Adam Jones's Genocide textbook; led a 10-person team across two research centers under Prof. Wendy Lower.</span><span class="xyr">2021–25</span></div>
@@ -449,29 +454,6 @@
   function cl(){ s.classList.remove('show'); }
   s.addEventListener('click',function(e){ if(e.target===s)cl(); });
   var b=document.getElementById('pmClose'); if(b)b.addEventListener('click',cl);
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape')cl(); });
-})();
-</script>
-  <!-- CHART LIGHTBOX -->
-  <div class="chlb" id="chLb">
-    <div class="lbinner">
-      <div class="lbhd"><span class="lbt" id="lbTitle"></span><button class="lbclose" id="lbClose" aria-label="Close">✕</button></div>
-      <div class="lbbody"><img id="lbImg" src="" alt="" /></div>
-    </div>
-  </div>
-<script>
-(function(){
-  var lb=document.getElementById('chLb'), img=document.getElementById('lbImg'), ttl=document.getElementById('lbTitle');
-  if(!lb) return;
-  document.querySelectorAll('.chcard').forEach(function(c){
-    c.addEventListener('click',function(){
-      img.src=c.getAttribute('data-src'); ttl.textContent=c.getAttribute('data-title');
-      lb.classList.add('show');
-    });
-  });
-  function cl(){ lb.classList.remove('show'); }
-  document.getElementById('lbClose').addEventListener('click',cl);
-  lb.addEventListener('click',function(e){ if(e.target===lb)cl(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape')cl(); });
 })();
 </script>

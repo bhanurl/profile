@@ -13,7 +13,7 @@
     --cream:#F2E7D2; --cream-2:#EADCC0; --paper:#FBF5E9;
     --ink:#2B2118; --ink-soft:#473A2B; --ink-faint:#7C6F5C;
     --terra:#C2552F; --terra-dk:#B8431B; --marigold:#E0AE5B;
-    --indigo:#2A1B3D; --indigo-dk:#1C1230; --olive:#94A06E; --coral:#CE8E84; --violet:#A99BC9; --rule:#DCCBAD;
+    --indigo:#2B2A2C; --indigo-dk:#1D1C1E; --olive:#94A06E; --coral:#CE8E84; --violet:#A99BC9; --rule:#DCCBAD;
     --serif:"Instrument Serif",serif; --gloock:"Gloock",serif; --bric:"Bricolage Grotesque",sans-serif;
     --caveat:"Caveat",cursive; --courier:"Courier Prime",monospace; --space:"Space Mono",monospace;
   }
@@ -43,7 +43,7 @@
   .cut.m{ background:var(--marigold); transform:rotate(-3deg); }
   .cut.c{ background:var(--coral); transform:rotate(2deg); }
   .cut .pin0{ position:absolute; top:-8px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:var(--terra); box-shadow:inset -2px -2px 0 rgba(0,0,0,0.25); }
-  .phero .hand{ font-family:"Rubik Wet Paint",var(--caveat),cursive; font-weight:400; font-size:clamp(24px,3.4vw,40px); color:var(--marigold); transform:rotate(-2deg); line-height:1.15; }
+  .phero .hand{ font-family:var(--courier); font-weight:700; font-size:clamp(15px,2vw,20px); letter-spacing:0.04em; text-transform:uppercase; color:var(--marigold); line-height:1.4; }
   .phero .sub{ font-family:var(--courier); font-size:14px; color:#E5DAC2; max-width:60ch; margin:18px 0 0; }
 
   /* controls */
@@ -83,7 +83,7 @@
   .pin.guest{ background:var(--paper); color:var(--ink); border:1.5px dashed var(--terra-dk); }
   .pin.imgpin{ width:180px; padding:8px; background:var(--cream); }
   .pin.imgpin img{ width:100%; display:block; }
-  .pin.imgpin .pcap{ font-family:var(--caveat); font-weight:700; font-size:18px; color:var(--ink); text-align:center; margin-top:4px; }
+  .pin.imgpin .pcap{ font-family:var(--courier); font-weight:700; font-size:12px; color:var(--ink); text-align:center; margin-top:6px; }
   .pin.faded{ opacity:0.16; filter:saturate(0.4); }
   .pin.handnote{ background:transparent; box-shadow:none; font-family:var(--caveat); font-weight:700; color:var(--marigold); width:auto; max-width:220px; }
   .pin.handnote .pttl{ font-family:"Caveat Brush",var(--caveat),cursive; font-size:32px; color:var(--marigold); }
@@ -134,9 +134,40 @@
     .board{ width:760px; }
     .phero .sub{ padding-bottom:4px; }
   }
+
+  /* ===== WIP error gate ===== */
+  .wipgate{ position:fixed; inset:0; z-index:200; background:var(--indigo); display:flex; align-items:center; justify-content:center; padding:24px; transition:opacity .35s ease; }
+  .wipgate.hide{ opacity:0; pointer-events:none; }
+  .wipgate .grain2{ position:absolute; inset:0; opacity:0.08; background-image:radial-gradient(var(--cream) 1px,transparent 1px); background-size:14px 14px; pointer-events:none; }
+  .wipcard{ position:relative; width:min(540px,94vw); background:var(--paper); border:2px solid var(--ink); box-shadow:8px 10px 0 rgba(0,0,0,0.35); }
+  .wipbar{ display:flex; align-items:center; gap:7px; padding:11px 16px; border-bottom:2px solid var(--ink); background:var(--cream-2); }
+  .wipdot{ width:11px; height:11px; border-radius:50%; background:var(--ink-faint); opacity:.55; }
+  .wiptag{ margin-left:8px; font-family:var(--space); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .wipbody{ padding:30px 30px 32px; }
+  .wipcode{ font-family:var(--space); font-size:11px; letter-spacing:0.13em; text-transform:uppercase; color:var(--terra-dk); font-weight:700; }
+  .wiptitle{ font-family:var(--gloock); font-weight:400; font-size:clamp(26px,4vw,34px); line-height:1.06; margin:14px 0 14px; color:var(--ink); }
+  .wipmsg{ font-family:var(--courier); font-size:14px; line-height:1.6; color:var(--ink-soft); margin:0 0 12px; }
+  .wipmsg.dim{ color:var(--ink-faint); font-size:12.5px; }
+  .wipbtn{ margin-top:14px; font-family:var(--space); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:13px 22px; border-radius:3px; cursor:pointer; transition:background .15s; }
+  .wipbtn:hover{ background:var(--terra-dk); }
 </style>
 </head>
 <body>
+
+  <!-- WIP ERROR GATE -->
+  <div class="wipgate" id="wipGate">
+    <div class="grain2"></div>
+    <div class="wipcard">
+      <div class="wipbar"><span class="wipdot"></span><span class="wipdot"></span><span class="wipdot"></span><span class="wiptag">play.exe</span></div>
+      <div class="wipbody">
+        <div class="wipcode">⚠ ERROR 418 — PAGE UNDER CONSTRUCTION</div>
+        <h2 class="wiptitle">This page is still a work in progress.</h2>
+        <p class="wipmsg">You've wandered into my scrapbook while the paint is still wet. Pins may be loose, strings may be crossed, and nothing here is load-bearing.</p>
+        <p class="wipmsg dim">// proceed at your own delight</p>
+        <button class="wipbtn" id="wipDismiss" type="button">Enter anyway →</button>
+      </div>
+    </div>
+  </div>
 
   <header class="masthead">
     <div class="wrap"><div class="flag">
@@ -160,7 +191,7 @@
           <span class="cut c">Explore</span>
           <span class="hand">my personal brain salad ↴</span>
         </div>
-        <p class="sub">A working scrapbook — research questions I'm chasing, things I'm reading, ideas and people on my radar, and the odd fun fact. <b style="color:var(--cream)">Drag the pins around. Tap one to open it.</b> This page grows as I do.</p>
+        <p class="sub"><b style="color:var(--marigold)">WIP_WARNING:</b> I'm still working on this site! Proceed with caution! A working scrapbook — research questions I'm chasing, things I'm reading, ideas and people on my radar, and the odd fun fact. The brave site explorer is encouraged to tinker around with the pins! Thanks for stopping by!</p>
       </section>
 
       <div class="controls">
@@ -264,10 +295,9 @@
     {id:"img-b3",c:"me",x:560,y:1335,t:"Terns, taking off",img:"assets/play/bird-5.jpg",cap:"terns, taking off",body:"The whole flock lifting at once — the moment just before they scatter."},
     {id:"me3",c:"me",x:815,y:1350,t:"Ratanakiri, 2022",teaser:"Fieldwork with the Jarai community.",body:"One of the formative experiences of my work: workshopping in the Cambodian highlands with Indigenous Jarai leaders, documenting rights in a critical-minerals negotiation.",link:"Work.html",linkText:"See the project"},
 
-    {id:"me1",c:"me",x:30,y:1600,t:"I dream in four languages",teaser:"Telugu, Hindi, Spanish, Korean.",body:"Telugu and Hindi fluently; Spanish in the middle; Korean just enough to get into trouble. Languages are how I keep the generalist muscle warm."},
+    {id:"me1",c:"me",x:30,y:1600,t:"I dream in four languages",teaser:"Telugu, Hindi, Spanish, Korean.",body:"Telugu and Hindi fluently; Spanish in the middle; Korean just enough to get into trouble. Languages are how I keep my curiosity limber."},
     {id:"img-camb",c:"me",x:300,y:1605,t:"Somewhere fieldworthy",img:"assets/work/cambodia-1.jpg",cap:"Angkor, 2022",body:"Angkor, 2022 — shot on film during my Oxfam fieldwork summer in Cambodia."},
-    {id:"guestpin",c:"guest",x:560,y:1600,t:"Leave me a thought →",teaser:"A rec, a question, a fun fact.",body:"This board is better with company. Pin a book, an idea, or a question and it'll join the wall.",action:"guest"},
-    {id:"hand1",c:"me",hand:true,x:815,y:1560,t:"drag me ✿"}
+    {id:"guestpin",c:"guest",x:560,y:1600,t:"Leave me a thought →",teaser:"A rec, a question, a fun fact.",body:"This board is better with company. Pin a book, an idea, or a question and it'll join the wall.",action:"guest"}
   ];
 
   var board=document.getElementById('board');
@@ -405,6 +435,15 @@
 
   allPins.forEach(makePin);
   updateStrings();
+})();
+</script>
+<script>
+(function(){
+  var g=document.getElementById('wipGate'); if(!g) return;
+  function hide(){ g.classList.add('hide'); }
+  var b=document.getElementById('wipDismiss'); if(b) b.addEventListener('click',hide);
+  g.addEventListener('click',function(e){ if(e.target===g) hide(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
 })();
 </script>
 </body>
